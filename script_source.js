@@ -53,29 +53,22 @@ function playGame() {
             else output.splice(0, 1, "Ei löytynyt vastaavuutta")
         return output
     }
+    
+    console.log(action)
+    
+    if (action == "pohjoinen") {mapLocation -= 3}
+    else if (action == "etelä") {mapLocation += 3}
+    else if (action == "itä") {mapLocation += 1}
+    else if (action == "länsi") {mapLocation -=1}
+    else {gameMessage = "Tuntematon toiminto"}
 
-    switch (action) {
-        case "pohjoinen": 
-            mapLocation -= 3
-            break
-        
-        case "etelä":
-            mapLocation += 3
-            break
-        
-        case "länsi":
-            mapLocation -= 1
-            break
-        
-        case "itä":
-            mapLocation += 1
-            break
-
-        default:
-            gameMessage = "Tuntematon toiminto"
-    }
+    render()
 }
 
 function render() {
+    // sijainnin päivitys pelaajalle
+    output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
+    // palaute pelaajalle 
+    output.innerHTML += "<br><em>" + gameMessage + "</em>"
 }
