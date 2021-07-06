@@ -20,7 +20,7 @@ let playersInput = ""
 let gameMessage = ""
 
 // Pelaajan köytössä olevat toiminnot
-let actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä", "poimi", "pudota", "käytä"]
+let actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä"]
 let action = ""
 
 let output = document.querySelector("#output")
@@ -42,9 +42,8 @@ function playGame() {
     gameMessage = ""
     action = ""
     let playersInputArray = playersInput.split(' ')
-    console.log(playersInputArray)
     
-    console.log(checkAction())
+    action = checkAction()
 
     function checkAction() {
         const output = []
@@ -53,6 +52,27 @@ function playGame() {
                 output.splice(0, 1, element)
             else output.splice(0, 1, "Ei löytynyt vastaavuutta")
         return output
+    }
+
+    switch (action) {
+        case "pohjoinen": 
+            mapLocation -= 3
+            break
+        
+        case "etelä":
+            mapLocation += 3
+            break
+        
+        case "länsi":
+            mapLocation -= 1
+            break
+        
+        case "itä":
+            mapLocation += 1
+            break
+
+        default:
+            gameMessage = "Tuntematon toiminto"
     }
 }
 

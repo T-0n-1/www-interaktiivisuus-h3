@@ -45,9 +45,20 @@
       "oAP" : "\/images\/aukio.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/aukio.webp" : {
+      "ft" : 8388608,
+      "iS" : 179556,
+      "oA" : 0,
+      "oAP" : "\/images\/aukio.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/background.jpg" : {
@@ -58,9 +69,20 @@
       "oAP" : "\/images\/background.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/background.webp" : {
+      "ft" : 8388608,
+      "iS" : 242944,
+      "oA" : 0,
+      "oAP" : "\/images\/background.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/dragon.jpg" : {
@@ -71,9 +93,20 @@
       "oAP" : "\/images\/dragon.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/dragon.webp" : {
+      "ft" : 8388608,
+      "iS" : 143068,
+      "oA" : 0,
+      "oAP" : "\/images\/dragon.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/joki.jpg" : {
@@ -89,6 +122,17 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/images\/joki.webp" : {
+      "ft" : 8388608,
+      "iS" : 184068,
+      "oA" : 0,
+      "oAP" : "\/images\/joki.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
     "\/images\/kaivo.jpg" : {
       "ft" : 16384,
       "iS" : 486963,
@@ -97,9 +141,44 @@
       "oAP" : "\/images\/kaivo.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/kaivo.webp" : {
+      "ft" : 8388608,
+      "iS" : 318780,
+      "oA" : 0,
+      "oAP" : "\/images\/kaivo.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/images\/map.png" : {
+      "ft" : 32768,
+      "iS" : 32768,
+      "oA" : 0,
+      "oAP" : "\/images\/map.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-photo",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/images\/map.webp" : {
+      "ft" : 8388608,
+      "iS" : 8604,
+      "oA" : 0,
+      "oAP" : "\/images\/map.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/mokki.jpg" : {
@@ -110,9 +189,20 @@
       "oAP" : "\/images\/mokki.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/mokki.webp" : {
+      "ft" : 8388608,
+      "iS" : 114304,
+      "oA" : 0,
+      "oAP" : "\/images\/mokki.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/penkki.jpg" : {
@@ -128,6 +218,17 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/images\/penkki.webp" : {
+      "ft" : 8388608,
+      "iS" : 136862,
+      "oA" : 0,
+      "oAP" : "\/images\/penkki.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
     "\/images\/polku.jpg" : {
       "ft" : 16384,
       "iS" : 539200,
@@ -136,9 +237,20 @@
       "oAP" : "\/images\/polku.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/polku.webp" : {
+      "ft" : 8388608,
+      "iS" : 324492,
+      "oA" : 0,
+      "oAP" : "\/images\/polku.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/portti.jpg" : {
@@ -154,6 +266,17 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/images\/portti.webp" : {
+      "ft" : 8388608,
+      "iS" : 185356,
+      "oA" : 0,
+      "oAP" : "\/images\/portti.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
     "\/images\/torni.jpg" : {
       "ft" : 16384,
       "iS" : 210331,
@@ -162,9 +285,20 @@
       "oAP" : "\/images\/torni.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/torni.webp" : {
+      "ft" : 8388608,
+      "iS" : 86932,
+      "oA" : 0,
+      "oAP" : "\/images\/torni.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/index.html" : {
@@ -2055,7 +2189,7 @@
       "useUnixNewlines" : 0
     },
     "languageDefaultsJPG" : {
-      "autoOutputAction" : 1,
+      "autoOutputAction" : 0,
       "autoOutputPathFilenamePattern" : "*.jpg",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",

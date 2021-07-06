@@ -23,7 +23,7 @@ var playersInput = ""; // Pelin viesti
 
 var gameMessage = ""; // Pelaajan köytössä olevat toiminnot
 
-var actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä", "poimi", "pudota", "käytä"];
+var actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä"];
 var action = "";
 var output = document.querySelector("#output");
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
@@ -43,8 +43,7 @@ function playGame() {
   gameMessage = "";
   action = "";
   var playersInputArray = playersInput.split(' ');
-  console.log(playersInputArray);
-  console.log(checkAction());
+  action = checkAction();
 
   function checkAction() {
     var output = [];
@@ -64,6 +63,27 @@ function playGame() {
     }
 
     return output;
+  }
+
+  switch (action) {
+    case "pohjoinen":
+      mapLocation -= 3;
+      break;
+
+    case "etelä":
+      mapLocation += 3;
+      break;
+
+    case "länsi":
+      mapLocation -= 1;
+      break;
+
+    case "itä":
+      mapLocation += 1;
+      break;
+
+    default:
+      gameMessage = "Tuntematon toiminto";
   }
 }
 
