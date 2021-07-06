@@ -29,6 +29,14 @@ render();
 
 function clickHandler() {
   console.log("Nappia painettu");
+  playGame();
 }
+
+function playGame() {
+  playersInput = input.value.toLowerCase();
+  console.log(playersInput);
+}
+
+function render() {}
 
 //# sourceMappingURL=script.js.map

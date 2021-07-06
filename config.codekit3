@@ -4,11 +4,19 @@
     {
       "name" : "Process All Remaining Files and Folders",
       "stepType" : 1,
-      "uuidString" : "2AA50E3D-7464-4522-AF50-BE9E1DF6264D"
+      "uuidString" : "2BB86DB3-6AC3-4E8E-8542-D4E08CBAF3BE"
     }
   ],
   "creatorBuild" : "34127",
   "files" : {
+    "\/.gitignore" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/.gitignore",
+      "oF" : 1
+    },
     "\/css\/styles.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -28,6 +36,136 @@
       "oA" : 0,
       "oAP" : "\/css\/styles.css.map",
       "oF" : 0
+    },
+    "\/images\/aukio.jpg" : {
+      "ft" : 16384,
+      "iS" : 324381,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/aukio.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/background.jpg" : {
+      "ft" : 16384,
+      "iS" : 472205,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/background.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/dragon.jpg" : {
+      "ft" : 16384,
+      "iS" : 301750,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/dragon.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/joki.jpg" : {
+      "ft" : 16384,
+      "iS" : 356344,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/joki.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/kaivo.jpg" : {
+      "ft" : 16384,
+      "iS" : 486963,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/kaivo.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/mokki.jpg" : {
+      "ft" : 16384,
+      "iS" : 255872,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/mokki.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/penkki.jpg" : {
+      "ft" : 16384,
+      "iS" : 299307,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/penkki.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/polku.jpg" : {
+      "ft" : 16384,
+      "iS" : 539200,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/polku.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/portti.jpg" : {
+      "ft" : 16384,
+      "iS" : 344925,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/portti.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/torni.jpg" : {
+      "ft" : 16384,
+      "iS" : 210331,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/images\/torni.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-photo",
+      "q" : 100,
+      "rq" : 75
     },
     "\/index.html" : {
       "cB" : 0,
@@ -55,20 +193,6 @@
       "oA" : 0,
       "oAP" : "\/js\/script.js.map",
       "oF" : 0
-    },
-    "\/node_modules" : {
-      "ft" : 65536,
-      "oA" : 2,
-      "oAP" : "\/node_modules",
-      "oF" : 0
-    },
-    "\/package-lock.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/package-lock-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
     },
     "\/script_source.js" : {
       "bF" : 0,
@@ -103,10 +227,10 @@
 
   },
   "projectAttributes" : {
-    "creationDate" : 647255851.61245596,
+    "creationDate" : 647261176.03923202,
     "displayValue" : "h3",
     "displayValueWasSetByUser" : 0,
-    "iconImageName" : "brackets-azure",
+    "iconImageName" : "brackets-ucla",
     "iconImageWasSetByUser" : 0
   },
   "projectSettings" : {
@@ -1931,7 +2055,7 @@
       "useUnixNewlines" : 0
     },
     "languageDefaultsJPG" : {
-      "autoOutputAction" : 0,
+      "autoOutputAction" : 1,
       "autoOutputPathFilenamePattern" : "*.jpg",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",
