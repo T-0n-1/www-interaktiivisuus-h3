@@ -39,7 +39,21 @@ function clickHandler() {
 
 function playGame() {
     playersInput = input.value.toLowerCase()
-    console.log(playersInput)
+    gameMessage = ""
+    action = ""
+    let playersInputArray = playersInput.split(' ')
+    console.log(playersInputArray)
+    
+    console.log(checkAction())
+
+    function checkAction() {
+        const output = []
+        for (let element of playersInputArray)
+            if (actionsForPlayer.includes(element))
+                output.splice(0, 1, element)
+            else output.splice(0, 1, "Ei löytynyt vastaavuutta")
+        return output
+    }
 }
 
 function render() {
