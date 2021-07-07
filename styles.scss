@@ -1,3 +1,14 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 1px solid #000;
+}
+
 .outputHeader {
     font-weight: bold;
     font-size: 18px;
