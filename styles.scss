@@ -8,6 +8,29 @@ body {
 .container {
     border: 1px solid #000;
     padding: 10px;
+    width: 500px;
+    height: 500px;
+    background-image: image-set(
+        url("/images/background.webp"),
+        url("/images/background.webp") type("image/webp"),
+        url("/images/background.jpg"),
+        url("/images/background.jpg") type("image/jpeg")
+    ); // very limited support for image-set.. (could also use srcset inside HTML instead)
+    background-image: url("/images/background.webp"); // ..that's why this fallback
+    background-size: cover;
+
+    &-inner {
+        width: 302px;
+        margin: 0 auto;
+        text-align: center;
+
+        picture {
+            width: 300px;
+            height: 267px;
+            border: 1px solid white;
+            display: block;
+        }
+    }
 }
 
 .outputHeader {
@@ -17,4 +40,10 @@ body {
 
 em {
     color: red;
+}
+
+p {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    border-radius: 30%;
+    color: #ddd;
 }
