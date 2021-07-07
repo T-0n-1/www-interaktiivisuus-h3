@@ -15,7 +15,27 @@ map[4] = "Kapea metsäpolku";
 map[5] = "Vanha portti";
 map[6] = "Joen ranta";
 map[7] = "Tyhjä puupenkki";
-map[8] = "Vanha mökki, sisältä kuuluu hiljaista musiikkia"; // Sijainti pelin alussa
+map[8] = "Vanha mökki, sisältä kuuluu hiljaista musiikkia";
+var imagesWebp = [];
+imagesWebp[0] = "torni.webp";
+imagesWebp[1] = "kaivo.webp";
+imagesWebp[2] = "aukio.webp";
+imagesWebp[3] = "dragon.webp";
+imagesWebp[4] = "polku.webp";
+imagesWebp[5] = "portti.webp";
+imagesWebp[6] = "joki.webp";
+imagesWebp[7] = "penkki.webp";
+imagesWebp[8] = "mokki.webp";
+var imagesJpg = [];
+imagesJpg[0] = "torni.jpg";
+imagesJpg[1] = "kaivo.jpg";
+imagesJpg[2] = "aukio.jpg";
+imagesJpg[3] = "dragon.jpg";
+imagesJpg[4] = "polku.jpg";
+imagesJpg[5] = "portti.jpg";
+imagesJpg[6] = "joki.jpg";
+imagesJpg[7] = "penkki.jpg";
+imagesJpg[8] = "mokki.jpg"; // Sijainti pelin alussa
 
 var mapLocation = 4; // Pelaajan syöte
 
@@ -24,17 +44,19 @@ var playersInput = ""; // Pelin viesti
 var gameMessage = ""; // Pelaajan köytössä olevat toiminnot
 
 var actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä"];
-var action = "";
+var action = ""; // Käyttöliittymäkomponentit
+
 var output = document.querySelector("#output");
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
 var input = document.querySelector("#input");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
+var webpImage = document.querySelector("source");
+var jpgImage = document.querySelector("img");
 render();
 
 function clickHandler() {
-  console.log("Nappia painettu");
   playGame();
 }
 
@@ -91,7 +113,9 @@ function playGame() {
 }
 
 function render() {
-  // sijainnin päivitys pelaajalle
+  webpImage.srcset = "images/" + imagesWebp[mapLocation];
+  jpgImage.src = "images/" + imagesJpg[mapLocation]; // sijainnin päivitys pelaajalle
+
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // palaute pelaajalle 
 
   output.innerHTML += "<br><em>" + gameMessage + "</em>";
