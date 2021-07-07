@@ -35,7 +35,17 @@ imagesJpg[4] = "polku.jpg";
 imagesJpg[5] = "portti.jpg";
 imagesJpg[6] = "joki.jpg";
 imagesJpg[7] = "penkki.jpg";
-imagesJpg[8] = "mokki.jpg"; // Sijainti pelin alussa
+imagesJpg[8] = "mokki.jpg";
+var blockMessage = [];
+blockMessage[0] = "Haluamasi reitti on liian vaarallinen";
+blockMessage[1] = "Salaperäinen voima estää liikkumesi tuohon suuntaan";
+blockMessage[2] = "Vaikeakulkuinen ryteikkö estää kulkemisen";
+blockMessage[3] = "Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta";
+blockMessage[4] = "";
+blockMessage[5] = "Portti sulkeutuu ja estää pääsysi";
+blockMessage[6] = "Joen voimakas virtaus estää joen ylityken";
+blockMessage[7] = "Metsä on liian tiheä kuljettavaksi";
+blockMessage[8] = "Kauhu jähmettää sinut paikallesi etkä tohdi kulkea tähän suuntaan"; // Sijainti pelin alussa
 
 var mapLocation = 4; // Pelaajan syöte
 
@@ -90,19 +100,39 @@ function playGame() {
 
   switch (action) {
     case 'pohjoinen':
-      mapLocation -= 3;
+      if (mapLocation >= 3) {
+        mapLocation -= 3;
+      } else {
+        gameMessage = blockMessage[mapLocation];
+      }
+
       break;
 
     case 'etelä':
-      mapLocation += 3;
+      if (mapLocation <= 5) {
+        mapLocation += 3;
+      } else {
+        gameMessage = blockMessage[mapLocation];
+      }
+
       break;
 
-    case 'itä':
-      mapLocation += 1;
+    case "itä":
+      if (mapLocation % 3 != 2) {
+        mapLocation += 1;
+      } else {
+        gameMessage = blockMessage[mapLocation];
+      }
+
       break;
 
-    case 'länsi':
-      mapLocation -= 1;
+    case "länsi":
+      if (mapLocation % 3 != 0) {
+        mapLocation -= 1;
+      } else {
+        gameMessage = blockMessage[mapLocation];
+      }
+
       break;
 
     default:

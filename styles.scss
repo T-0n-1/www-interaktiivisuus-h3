@@ -15,9 +15,10 @@ body {
         url("/images/background.webp") type("image/webp"),
         url("/images/background.jpg"),
         url("/images/background.jpg") type("image/jpeg")
-    ); // very limited support for image-set.. (could also use srcset inside HTML instead)
+    ); // very limited support for image-set.. regardless of caniuse pages info
     background-image: url("/images/background.webp"); // ..that's why this fallback
     background-size: cover;
+    background-blend-mode: darken;
 
     &-inner {
         width: 304px;

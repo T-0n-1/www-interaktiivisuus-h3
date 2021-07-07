@@ -17,6 +17,7 @@ body {
   background-image: image-set(url("/images/background.webp"), url("/images/background.webp") type("image/webp"), url("/images/background.jpg"), url("/images/background.jpg") type("image/jpeg"));
   background-image: url("/images/background.webp");
   background-size: cover;
+  background-blend-mode: darken;
 }
 .container-inner {
   width: 304px;
