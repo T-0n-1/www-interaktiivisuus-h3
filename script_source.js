@@ -44,6 +44,7 @@ function playGame() {
     let playersInputArray = playersInput.split(' ')
     
     action = checkAction()
+    action = action.toString()
 
     function checkAction() {
         const output = []
@@ -54,13 +55,27 @@ function playGame() {
         return output
     }
     
-    console.log(action)
-    
-    if (action == "pohjoinen") {mapLocation -= 3}
-    else if (action == "etelä") {mapLocation += 3}
-    else if (action == "itä") {mapLocation += 1}
-    else if (action == "länsi") {mapLocation -=1}
-    else {gameMessage = "Tuntematon toiminto"}
+    switch (action) {
+
+        case 'pohjoinen':
+            mapLocation -= 3
+            break
+        
+        case 'etelä':
+            mapLocation += 3
+            break
+
+        case 'itä':
+            mapLocation += 1
+            break
+
+        case 'länsi':
+            mapLocation -= 1
+            break
+
+        default:
+            gameMessage = "Tuntematon toiminto"
+    } 
 
     render()
 }

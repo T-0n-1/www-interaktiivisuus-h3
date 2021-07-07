@@ -44,6 +44,7 @@ function playGame() {
   action = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
+  action = action.toString();
 
   function checkAction() {
     var output = [];
@@ -65,18 +66,25 @@ function playGame() {
     return output;
   }
 
-  console.log(action);
+  switch (action) {
+    case 'pohjoinen':
+      mapLocation -= 3;
+      break;
 
-  if (action == "pohjoinen") {
-    mapLocation -= 3;
-  } else if (action == "etelä") {
-    mapLocation += 3;
-  } else if (action == "itä") {
-    mapLocation += 1;
-  } else if (action == "länsi") {
-    mapLocation -= 1;
-  } else {
-    gameMessage = "Tuntematon toiminto";
+    case 'etelä':
+      mapLocation += 3;
+      break;
+
+    case 'itä':
+      mapLocation += 1;
+      break;
+
+    case 'länsi':
+      mapLocation -= 1;
+      break;
+
+    default:
+      gameMessage = "Tuntematon toiminto";
   }
 
   render();
