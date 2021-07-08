@@ -83,7 +83,9 @@ function playGame() {
   action = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
-  action = action.toString(); // Own function for checking if player's inout includes possible action for player
+  console.log(action);
+  action = action.toString();
+  console.log(action); // Own function for checking if player's inout includes possible action for player
 
   function checkAction() {
     var output = [];
@@ -104,6 +106,45 @@ function playGame() {
 
     return output;
   }
+
+  function pickUpItem() {
+    var _iterator2 = _createForOfIteratorHelper(playersInputArray),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var element = _step2.value;
+
+        if (items.includes(element)) {
+          var i = items.indexOf(element);
+
+          if (itemLocations[i] == mapLocation) {
+            backPack.push(items[i]);
+            gameMessage = element + " on nyt repussasi";
+            items.splice(i, 1);
+            itemLocations.splice(i, 1);
+            break;
+          } else {
+            gameMessage = "Ei sellaista tavaraa poimittavana";
+          }
+        } else {
+          if (gameMessage.endsWith("repussasi")) {
+            break;
+          } else {
+            gameMessage += "Ei tavaraa poimittavana";
+          }
+        }
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+  }
+
+  function dropItem() {}
+
+  function useItem() {}
 
   switch (action) {
     case 'pohjoinen':
@@ -140,6 +181,18 @@ function playGame() {
         gameMessage = blockMessage[mapLocation];
       }
 
+      break;
+
+    case "poimi":
+      pickUpItem();
+      break;
+
+    case "pudota":
+      dropItem();
+      break;
+
+    case "käytä":
+      useItem();
       break;
 
     default:

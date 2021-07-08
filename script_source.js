@@ -91,7 +91,9 @@ function playGame() {
     let playersInputArray = playersInput.split(' ')
 
     action = checkAction()
+    console.log(action)
     action = action.toString()
+    console.log(action)
 
     // Own function for checking if player's inout includes possible action for player
     function checkAction() {
@@ -99,9 +101,35 @@ function playGame() {
         for (let element of playersInputArray)
             if (actionsForPlayer.includes(element))
                 output.splice(0, 1, element)
-            else if (output === [])
-                output.splice(0, 1, "Ei löytynyt vastaavuutta")
+        else if (output === [])
+            output.splice(0, 1, "Ei löytynyt vastaavuutta")
         return output
+    }
+
+    function pickUpItem() {
+        for (let element of playersInputArray)
+            if (items.includes(element)) {
+                let i = items.indexOf(element)
+                if (itemLocations[i] == mapLocation) {
+                    backPack.push(items[i])
+                    gameMessage = element + " on nyt repussasi"
+                    items.splice(i, 1)
+                    itemLocations.splice(i, 1)
+                    break
+                } else { gameMessage = "Ei sellaista tavaraa poimittavana" } 
+            } else {
+                if (gameMessage.endsWith("repussasi")) {
+                    break
+                } else { gameMessage += "Ei tavaraa poimittavana" } 
+            }
+        }
+
+    function dropItem() {
+
+    }
+
+    function useItem() {
+
     }
 
     switch (action) {
@@ -136,6 +164,18 @@ function playGame() {
             } else {
                 gameMessage = blockMessage[mapLocation]
             }
+            break
+
+        case "poimi":
+            pickUpItem()
+            break
+
+        case "pudota":
+            dropItem()
+            break
+
+        case "käytä":
+            useItem()
             break
 
         default:

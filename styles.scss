@@ -6,8 +6,19 @@ body {
 }
 
 @keyframes moveBG {
-    0% { background-position-x: -150px; }
-    100% { background-position-x: 150px; }
+    25% { 
+        background-position-x: left;
+     }
+    50% { 
+        background-position-x: center;
+     }
+    75% { 
+        background-position-x: right;
+     }
+    100% { 
+        background-position-x: center;
+     }
+    
 }
 
 .container {
@@ -23,7 +34,7 @@ body {
     ); // very limited support for image-set.. regardless of caniuse pages info
     background-image: url("/images/background2.webp"); // ..that's why this fallback
     background-position-x: center;
-    animation: moveBG 15s linear infinite;
+    animation: moveBG 18s linear 0s infinite forwards;
 
     &-inner {
         width: 304px;

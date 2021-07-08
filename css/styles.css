@@ -9,20 +9,32 @@ body {
 }
 
 @-webkit-keyframes moveBG {
-  0% {
-    background-position-x: -150px;
+  25% {
+    background-position-x: left;
+  }
+  50% {
+    background-position-x: center;
+  }
+  75% {
+    background-position-x: right;
   }
   100% {
-    background-position-x: 150px;
+    background-position-x: center;
   }
 }
 
 @keyframes moveBG {
-  0% {
-    background-position-x: -150px;
+  25% {
+    background-position-x: left;
+  }
+  50% {
+    background-position-x: center;
+  }
+  75% {
+    background-position-x: right;
   }
   100% {
-    background-position-x: 150px;
+    background-position-x: center;
   }
 }
 .container {
@@ -34,8 +46,8 @@ body {
   background-image: image-set(url("/images/background2.webp"), url("/images/background2.webp") type("image/webp"), url("/images/background2.jpg"), url("/images/background2.jpg") type("image/jpeg"));
   background-image: url("/images/background2.webp");
   background-position-x: center;
-  -webkit-animation: moveBG 15s linear infinite;
-          animation: moveBG 15s linear infinite;
+  -webkit-animation: moveBG 18s linear 0s infinite forwards;
+          animation: moveBG 18s linear 0s infinite forwards;
 }
 .container-inner {
   width: 304px;
