@@ -87,7 +87,7 @@ function playGame() {
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var element = _step.value;
-        if (actionsForPlayer.includes(element)) output.splice(0, 1, element);else output.splice(0, 1, "Ei löytynyt vastaavuutta");
+        if (actionsForPlayer.includes(element)) output.splice(0, 1, element);else if (output === []) output.splice(0, 1, "Ei löytynyt vastaavuutta");
       }
     } catch (err) {
       _iterator.e(err);

@@ -89,7 +89,8 @@ function playGame() {
         for (let element of playersInputArray)
             if (actionsForPlayer.includes(element))
                 output.splice(0, 1, element)
-        else output.splice(0, 1, "Ei löytynyt vastaavuutta")
+            else if (output === [])
+                output.splice(0, 1, "Ei löytynyt vastaavuutta")
         return output
     }
 
