@@ -54,9 +54,9 @@ var playersInput = ""; // Pelin viesti
 var gameMessage = ""; // Pelin sisältämät tavarat
 
 var items = ["huilu", "kivi", "miekka"];
-var itemLocations = [1, 6, 8];
-var knownItems = ["huilu", "kivi", "miekka"];
-var item = ""; // Pelaajan inventaario
+var itemLocations = [1, 6, 8]; // let knownItems = ["huilu", "kivi", "miekka"]
+// let item = ""
+// Pelaajan inventaario
 
 var backPack = []; // Pelaajan köytössä olevat toiminnot
 
@@ -64,6 +64,8 @@ var actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä", "poimi", "pudot
 var action = ""; // Käyttöliittymäkomponentit
 
 var output = document.querySelector("#output");
+var inventory = document.querySelector("#inventory");
+var inGameMessage = document.querySelector("#gamemessage");
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
 var input = document.querySelector("#input");
 var button = document.querySelector("button");
@@ -120,7 +122,7 @@ function playGame() {
 
           if (itemLocations[i] == mapLocation) {
             backPack.push(items[i]);
-            gameMessage = element + " on nyt repussasi";
+            gameMessage = "Poimit mukaasi esineen: " + element;
             items.splice(i, 1);
             itemLocations.splice(i, 1);
             break;
@@ -128,7 +130,7 @@ function playGame() {
             gameMessage = "Ei sellaista tavaraa poimittavana";
           }
         } else {
-          if (gameMessage.endsWith("repussasi")) {
+          if (gameMessage.startsWith("Poimit")) {
             break;
           } else {
             gameMessage += "Ei tavaraa poimittavana";
@@ -210,9 +212,22 @@ function render() {
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
 
   if (itemLocations.includes(mapLocation)) // Own code for checking possible items
-    output.innerHTML += "<br><span class='item'>Näkyvissä on " + items[itemLocations.indexOf(mapLocation)] + "</span>"; // palaute pelaajalle 
+    gameMessage = "Näkyvissä on " + items[itemLocations.indexOf(mapLocation)]; // repun sisältö
 
-  output.innerHTML += "<br><em>" + gameMessage + "</em>";
+  if (backPack.length != 0) {
+    inventory.innerHTML = "Repussasi on " + backPack.join();
+  } else {
+    inventory.innerHTML = "Reppusi on tyhjä";
+  } // palaute pelaajalle 
+
+
+  if (gameMessage.startsWith("Poimit")) {
+    inGameMessage.innerHTML = "<strong>" + gameMessage + "</strong>";
+  } else if (gameMessage.startsWith("Näkyvissä")) {
+    inGameMessage.innerHTML = "<i>" + gameMessage + "</i>";
+  } else {
+    inGameMessage.innerHTML = "<em>" + gameMessage + "</em>";
+  }
 }
 
 //# sourceMappingURL=script.js.map

@@ -58,8 +58,8 @@ let gameMessage = ""
 // Pelin sisältämät tavarat
 let items = ["huilu", "kivi", "miekka"]
 let itemLocations = [1, 6, 8]
-let knownItems = ["huilu", "kivi", "miekka"]
-let item = ""
+// let knownItems = ["huilu", "kivi", "miekka"]
+// let item = ""
 
 // Pelaajan inventaario
 let backPack = []
@@ -70,11 +70,16 @@ let action = ""
 
 // Käyttöliittymäkomponentit
 let output = document.querySelector("#output")
+let inventory = document.querySelector("#inventory")
+let inGameMessage = document.querySelector("#gamemessage")
+
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation]
+
 let input = document.querySelector("#input")
 let button = document.querySelector("button")
 button.style.cursor = "pointer"
 button.addEventListener("click", clickHandler, false)
+
 let webpImage = document.querySelector("source")
 let jpgImage = document.querySelector("img")
 
@@ -112,13 +117,13 @@ function playGame() {
                 let i = items.indexOf(element)
                 if (itemLocations[i] == mapLocation) {
                     backPack.push(items[i])
-                    gameMessage = element + " on nyt repussasi"
+                    gameMessage = "Poimit mukaasi esineen: " + element
                     items.splice(i, 1)
                     itemLocations.splice(i, 1)
                     break
                 } else { gameMessage = "Ei sellaista tavaraa poimittavana" } 
             } else {
-                if (gameMessage.endsWith("repussasi")) {
+                if (gameMessage.startsWith("Poimit")) {
                     break
                 } else { gameMessage += "Ei tavaraa poimittavana" } 
             }
@@ -195,8 +200,18 @@ function render() {
 
     // mahdolliset esineet peliruudulla
     if (itemLocations.includes(mapLocation)) // Own code for checking possible items
-        output.innerHTML += "<br><span class='item'>Näkyvissä on " + items[itemLocations.indexOf(mapLocation)] + "</span>"
+        gameMessage = "Näkyvissä on " + items[itemLocations.indexOf(mapLocation)]
+
+    // repun sisältö
+    if (backPack.length != 0) {
+        inventory.innerHTML = "Repussasi on " + backPack.join()
+    } else { inventory.innerHTML = "Reppusi on tyhjä" }
 
     // palaute pelaajalle 
-    output.innerHTML += "<br><em>" + gameMessage + "</em>"
+    if (gameMessage.startsWith("Poimit")) {
+        inGameMessage.innerHTML = "<strong>" + gameMessage + "</strong>"
+    } 
+    else if (gameMessage.startsWith("Näkyvissä")) {
+        inGameMessage.innerHTML = "<i>" + gameMessage + "</i>"
+    } else { inGameMessage.innerHTML = "<em>" + gameMessage + "</em>" }
 }

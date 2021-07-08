@@ -70,13 +70,22 @@ em {
   color: red;
 }
 
-p {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  border-radius: 30%;
-  color: #ddd;
+strong {
+  color: lightskyblue;
 }
 
-.item {
+p {
+  color: #ddd;
+  margin: 8px;
+}
+
+#output {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  border-radius: 30%;
+  text-align: center;
+}
+
+i {
   color: lightgreen;
 }
 
