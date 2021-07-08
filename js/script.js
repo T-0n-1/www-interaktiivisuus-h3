@@ -124,14 +124,13 @@ function playGame() {
           if (itemLocations[i] == mapLocation) {
             backPack.push(items[i]);
             gameMessage = "Poimit mukaasi esineen: " + element;
+            warning.innerHTML = "";
             items.splice(i, 1);
             itemLocations.splice(i, 1);
             break;
-          } else {
-            warning.innerHTML = "Ei tavaraa sellaista poimittavana";
           }
         } else {
-          if (gameMessage.startsWith("Poimit")) {
+          if (backPack.includes(element)) {
             break;
           } else {
             warning.innerHTML = "Ei tavaraa poimittavana";
