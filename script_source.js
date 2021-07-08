@@ -55,8 +55,17 @@ let playersInput = ""
 // Pelin viesti
 let gameMessage = ""
 
+// Pelin sisältämät tavarat
+let items = ["huilu", "kivi", "miekka"]
+let itemLocations = [1, 6, 8]
+let knownItems = ["huilu", "kivi", "miekka"]
+let item = ""
+
+// Pelaajan inventaario
+let backPack = []
+
 // Pelaajan köytössä olevat toiminnot
-let actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä"]
+let actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä", "poimi", "pudota", "käytä"]
 let action = ""
 
 // Käyttöliittymäkomponentit
@@ -84,6 +93,7 @@ function playGame() {
     action = checkAction()
     action = action.toString()
 
+    // Own function for checking if player's inout includes possible action for player
     function checkAction() {
         const output = []
         for (let element of playersInputArray)
@@ -136,11 +146,16 @@ function playGame() {
 }
 
 function render() {
+    // kuvien renderöinti
     webpImage.srcset = "images/" + imagesWebp[mapLocation]
     jpgImage.src = "images/" + imagesJpg[mapLocation]
 
     // sijainnin päivitys pelaajalle
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
+
+    // mahdolliset esineet peliruudulla
+    if (itemLocations.includes(mapLocation)) // Own code for checking possible items
+        output.innerHTML += "<br><span class='item'>Näkyvissä on " + items[itemLocations.indexOf(mapLocation)] + "</span>"
 
     // palaute pelaajalle 
     output.innerHTML += "<br><em>" + gameMessage + "</em>"

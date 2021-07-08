@@ -51,9 +51,16 @@ var mapLocation = 4; // Pelaajan syöte
 
 var playersInput = ""; // Pelin viesti
 
-var gameMessage = ""; // Pelaajan köytössä olevat toiminnot
+var gameMessage = ""; // Pelin sisältämät tavarat
 
-var actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä"];
+var items = ["huilu", "kivi", "miekka"];
+var itemLocations = [1, 6, 8];
+var knownItems = ["huilu", "kivi", "miekka"];
+var item = ""; // Pelaajan inventaario
+
+var backPack = []; // Pelaajan köytössä olevat toiminnot
+
+var actionsForPlayer = ["pohjoinen", "etelä", "länsi", "itä", "poimi", "pudota", "käytä"];
 var action = ""; // Käyttöliittymäkomponentit
 
 var output = document.querySelector("#output");
@@ -76,7 +83,7 @@ function playGame() {
   action = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
-  action = action.toString();
+  action = action.toString(); // Own function for checking if player's inout includes possible action for player
 
   function checkAction() {
     var output = [];
@@ -143,10 +150,14 @@ function playGame() {
 }
 
 function render() {
+  // kuvien renderöinti
   webpImage.srcset = "images/" + imagesWebp[mapLocation];
   jpgImage.src = "images/" + imagesJpg[mapLocation]; // sijainnin päivitys pelaajalle
 
-  output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // palaute pelaajalle 
+  output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
+
+  if (itemLocations.includes(mapLocation)) // Own code for checking possible items
+    output.innerHTML += "<br><span class='item'>Näkyvissä on " + items[itemLocations.indexOf(mapLocation)] + "</span>"; // palaute pelaajalle 
 
   output.innerHTML += "<br><em>" + gameMessage + "</em>";
 }
