@@ -36,15 +36,15 @@ imagesJpg[8] = "mokki.jpg"
 
 let blockMessage = []
 
-blockMessage[0] = " Haluamasi reitti on liian vaarallinen"
-blockMessage[1] = " Salaperäinen voima estää liikkumesi tuohon suuntaan"
-blockMessage[2] = " Vaikeakulkuinen ryteikkö estää kulkemisen"
-blockMessage[3] = " Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta"
+blockMessage[0] = "Tornin takana sijaitseva korkea jyrkänne estää liikkumisen siihen suuntaan"
+blockMessage[1] = "Salaperäinen voima estää liikkumesi tuohon suuntaan"
+blockMessage[2] = "Vaikeakulkuinen ryteikkö estää kulkemisen"
+blockMessage[3] = "Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta"
 blockMessage[4] = " "
-blockMessage[5] = " Portti sulkeutuu ja estää pääsysi"
-blockMessage[6] = " Joen voimakas virtaus estää joen ylityken"
-blockMessage[7] = " Metsä on liian tiheä kuljettavaksi"
-blockMessage[8] = " Kauhu jähmettää sinut paikallesi etkä tohdi kulkea tähän suuntaan"
+blockMessage[5] = "Portti sulkeutuu ja estää pääsysi"
+blockMessage[6] = "Voimakas virtaus estää joen ylityken"
+blockMessage[7] = "Metsä on liian tiheä kuljettavaksi"
+blockMessage[8] = "Kauhu jähmettää sinut paikallesi etkä tohdi kulkea pidemmälle tähän suuntaan"
 
 // Sijainti pelin alussa
 let mapLocation = 4
@@ -99,9 +99,7 @@ function playGame() {
     let playersInputArray = playersInput.split(' ')
 
     action = checkAction()
-    console.log(action)
     action = action.toString()
-    console.log(action)
 
     // Own function for checking if player's inout includes possible action for player
     function checkAction() {
@@ -124,12 +122,12 @@ function playGame() {
                     items.splice(i, 1)
                     itemLocations.splice(i, 1)
                     break
-                } else { gameMessage = "Ei tavaraa poimittavana" } 
+                } else { warning.innerHTML = "Ei tavaraa sellaista poimittavana" } 
             } else {
                 if (gameMessage.startsWith("Poimit")) {
                     break
                 } 
-                else { gameMessage += "Ei tavaraa poimittavana" } 
+                else { warning.innerHTML = "Ei tavaraa poimittavana" } 
             }
         }
 
