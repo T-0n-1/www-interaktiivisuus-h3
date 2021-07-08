@@ -61,30 +61,6 @@
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/background.jpg" : {
-      "ft" : 16384,
-      "iS" : 472205,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/images\/background.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 1,
-      "ou" : "lpckwebp-photo",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/images\/background.webp" : {
-      "ft" : 8388608,
-      "iS" : 242944,
-      "oA" : 0,
-      "oAP" : "\/images\/background.webp",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-default",
-      "rq" : 75
-    },
     "\/images\/background2.jpg" : {
       "ft" : 16384,
       "iS" : 139424,

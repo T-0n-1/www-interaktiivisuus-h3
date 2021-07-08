@@ -8,16 +8,34 @@ body {
           align-items: center;
 }
 
+@-webkit-keyframes moveBG {
+  0% {
+    background-position-x: -150px;
+  }
+  100% {
+    background-position-x: 150px;
+  }
+}
+
+@keyframes moveBG {
+  0% {
+    background-position-x: -150px;
+  }
+  100% {
+    background-position-x: 150px;
+  }
+}
 .container {
   border: 1px solid #000;
   padding: 10px;
   width: 500px;
-  height: 500px;
-  background-image: -webkit-image-set(url("/images/background.webp"), url("/images/background.webp") type("image/webp"), url("/images/background.jpg"), url("/images/background.jpg") type("image/jpeg"));
-  background-image: image-set(url("/images/background.webp"), url("/images/background.webp") type("image/webp"), url("/images/background.jpg"), url("/images/background.jpg") type("image/jpeg"));
-  background-image: url("/images/background.webp");
-  background-size: cover;
-  background-blend-mode: darken;
+  height: 480px;
+  background-image: -webkit-image-set(url("/images/background2.webp"), url("/images/background2.webp") type("image/webp"), url("/images/background2.jpg"), url("/images/background2.jpg") type("image/jpeg"));
+  background-image: image-set(url("/images/background2.webp"), url("/images/background2.webp") type("image/webp"), url("/images/background2.jpg"), url("/images/background2.jpg") type("image/jpeg"));
+  background-image: url("/images/background2.webp");
+  background-position-x: center;
+  -webkit-animation: moveBG 15s linear infinite;
+          animation: moveBG 15s linear infinite;
 }
 .container-inner {
   width: 304px;
