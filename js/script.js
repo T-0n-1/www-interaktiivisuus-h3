@@ -37,15 +37,15 @@ imagesJpg[6] = "joki.jpg";
 imagesJpg[7] = "penkki.jpg";
 imagesJpg[8] = "mokki.jpg";
 var blockMessage = [];
-blockMessage[0] = "Haluamasi reitti on liian vaarallinen";
-blockMessage[1] = "Salaperäinen voima estää liikkumesi tuohon suuntaan";
-blockMessage[2] = "Vaikeakulkuinen ryteikkö estää kulkemisen";
-blockMessage[3] = "Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta";
-blockMessage[4] = "";
-blockMessage[5] = "Portti sulkeutuu ja estää pääsysi";
-blockMessage[6] = "Joen voimakas virtaus estää joen ylityken";
-blockMessage[7] = "Metsä on liian tiheä kuljettavaksi";
-blockMessage[8] = "Kauhu jähmettää sinut paikallesi etkä tohdi kulkea tähän suuntaan"; // Sijainti pelin alussa
+blockMessage[0] = " Haluamasi reitti on liian vaarallinen";
+blockMessage[1] = " Salaperäinen voima estää liikkumesi tuohon suuntaan";
+blockMessage[2] = " Vaikeakulkuinen ryteikkö estää kulkemisen";
+blockMessage[3] = " Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta";
+blockMessage[4] = " ";
+blockMessage[5] = " Portti sulkeutuu ja estää pääsysi";
+blockMessage[6] = " Joen voimakas virtaus estää joen ylityken";
+blockMessage[7] = " Metsä on liian tiheä kuljettavaksi";
+blockMessage[8] = " Kauhu jähmettää sinut paikallesi etkä tohdi kulkea tähän suuntaan"; // Sijainti pelin alussa
 
 var mapLocation = 4; // Pelaajan syöte
 
@@ -66,6 +66,7 @@ var action = ""; // Käyttöliittymäkomponentit
 var output = document.querySelector("#output");
 var inventory = document.querySelector("#inventory");
 var inGameMessage = document.querySelector("#gamemessage");
+var warning = document.querySelector("#warning");
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
 var input = document.querySelector("#input");
 var button = document.querySelector("button");
@@ -82,7 +83,9 @@ function clickHandler() {
 function playGame() {
   playersInput = input.value.toLowerCase();
   gameMessage = "";
+  inGameMessage.innerHTML = "";
   action = "";
+  warning.innerHTML = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
   console.log(action);
@@ -127,7 +130,7 @@ function playGame() {
             itemLocations.splice(i, 1);
             break;
           } else {
-            gameMessage = "Ei sellaista tavaraa poimittavana";
+            gameMessage = "Ei tavaraa poimittavana";
           }
         } else {
           if (gameMessage.startsWith("Poimit")) {
@@ -153,7 +156,7 @@ function playGame() {
       if (mapLocation >= 3) {
         mapLocation -= 3;
       } else {
-        gameMessage = blockMessage[mapLocation];
+        warning.innerHTML = blockMessage[mapLocation];
       }
 
       break;
@@ -162,7 +165,7 @@ function playGame() {
       if (mapLocation <= 5) {
         mapLocation += 3;
       } else {
-        gameMessage = blockMessage[mapLocation];
+        warning.innerHTML = blockMessage[mapLocation];
       }
 
       break;
@@ -171,7 +174,7 @@ function playGame() {
       if (mapLocation % 3 != 2) {
         mapLocation += 1;
       } else {
-        gameMessage = blockMessage[mapLocation];
+        warning.innerHTML = blockMessage[mapLocation];
       }
 
       break;
@@ -180,7 +183,7 @@ function playGame() {
       if (mapLocation % 3 != 0) {
         mapLocation -= 1;
       } else {
-        gameMessage = blockMessage[mapLocation];
+        warning.innerHTML = blockMessage[mapLocation];
       }
 
       break;
@@ -225,8 +228,6 @@ function render() {
     inGameMessage.innerHTML = "<strong>" + gameMessage + "</strong>";
   } else if (gameMessage.startsWith("Näkyvissä")) {
     inGameMessage.innerHTML = "<i>" + gameMessage + "</i>";
-  } else {
-    inGameMessage.innerHTML = "<em>" + gameMessage + "</em>";
   }
 }
 

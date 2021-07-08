@@ -55,24 +55,29 @@ body {
     font-size: 18px;
 }
 
-em {
+
+p {
+    color: #ddd;
+    margin: 8px;
+}
+
+#output {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    border-radius: 30%;
+    text-align: center;
+}
+
+#gamemessage, #warning {
+    display: block;
+    height: 1em;
+}
+
+#warning {
     color: red;
 }
 
 strong {
     color: lightskyblue;
-}
-
-p {
-    color: #ddd;
-    margin: 8px;
-    
-}
-
-#output {
-background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
-border-radius: 30%;
-text-align: center;
 }
 
 i {

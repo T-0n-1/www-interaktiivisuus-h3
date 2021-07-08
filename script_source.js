@@ -36,15 +36,15 @@ imagesJpg[8] = "mokki.jpg"
 
 let blockMessage = []
 
-blockMessage[0] = "Haluamasi reitti on liian vaarallinen"
-blockMessage[1] = "Salaperäinen voima estää liikkumesi tuohon suuntaan"
-blockMessage[2] = "Vaikeakulkuinen ryteikkö estää kulkemisen"
-blockMessage[3] = "Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta"
-blockMessage[4] = ""
-blockMessage[5] = "Portti sulkeutuu ja estää pääsysi"
-blockMessage[6] = "Joen voimakas virtaus estää joen ylityken"
-blockMessage[7] = "Metsä on liian tiheä kuljettavaksi"
-blockMessage[8] = "Kauhu jähmettää sinut paikallesi etkä tohdi kulkea tähän suuntaan"
+blockMessage[0] = " Haluamasi reitti on liian vaarallinen"
+blockMessage[1] = " Salaperäinen voima estää liikkumesi tuohon suuntaan"
+blockMessage[2] = " Vaikeakulkuinen ryteikkö estää kulkemisen"
+blockMessage[3] = " Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta"
+blockMessage[4] = " "
+blockMessage[5] = " Portti sulkeutuu ja estää pääsysi"
+blockMessage[6] = " Joen voimakas virtaus estää joen ylityken"
+blockMessage[7] = " Metsä on liian tiheä kuljettavaksi"
+blockMessage[8] = " Kauhu jähmettää sinut paikallesi etkä tohdi kulkea tähän suuntaan"
 
 // Sijainti pelin alussa
 let mapLocation = 4
@@ -72,6 +72,7 @@ let action = ""
 let output = document.querySelector("#output")
 let inventory = document.querySelector("#inventory")
 let inGameMessage = document.querySelector("#gamemessage")
+let warning = document.querySelector("#warning")
 
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation]
 
@@ -92,7 +93,9 @@ function clickHandler() {
 function playGame() {
     playersInput = input.value.toLowerCase()
     gameMessage = ""
+    inGameMessage.innerHTML = ""
     action = ""
+    warning.innerHTML = ""
     let playersInputArray = playersInput.split(' ')
 
     action = checkAction()
@@ -121,11 +124,12 @@ function playGame() {
                     items.splice(i, 1)
                     itemLocations.splice(i, 1)
                     break
-                } else { gameMessage = "Ei sellaista tavaraa poimittavana" } 
+                } else { gameMessage = "Ei tavaraa poimittavana" } 
             } else {
                 if (gameMessage.startsWith("Poimit")) {
                     break
-                } else { gameMessage += "Ei tavaraa poimittavana" } 
+                } 
+                else { gameMessage += "Ei tavaraa poimittavana" } 
             }
         }
 
@@ -143,7 +147,7 @@ function playGame() {
             if (mapLocation >= 3) {
                 mapLocation -= 3
             } else {
-                gameMessage = blockMessage[mapLocation]
+                warning.innerHTML = blockMessage[mapLocation]
             }
             break
 
@@ -151,7 +155,7 @@ function playGame() {
             if (mapLocation <= 5) {
                 mapLocation += 3
             } else {
-                gameMessage = blockMessage[mapLocation]
+                warning.innerHTML = blockMessage[mapLocation]
             }
             break
 
@@ -159,7 +163,7 @@ function playGame() {
             if (mapLocation % 3 != 2) {
                 mapLocation += 1
             } else {
-                gameMessage = blockMessage[mapLocation]
+                warning.innerHTML = blockMessage[mapLocation]
             }
             break
 
@@ -167,7 +171,7 @@ function playGame() {
             if (mapLocation % 3 != 0) {
                 mapLocation -= 1
             } else {
-                gameMessage = blockMessage[mapLocation]
+                warning.innerHTML = blockMessage[mapLocation]
             }
             break
 
@@ -213,5 +217,5 @@ function render() {
     } 
     else if (gameMessage.startsWith("Näkyvissä")) {
         inGameMessage.innerHTML = "<i>" + gameMessage + "</i>"
-    } else { inGameMessage.innerHTML = "<em>" + gameMessage + "</em>" }
+    }
 }
