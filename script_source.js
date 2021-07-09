@@ -133,7 +133,14 @@ function playGame() {
         }
 
     function dropItem() {
-
+        for (let element of playersInputArray)
+            if (backPack.includes(element)) {
+                warning.innerHTML = "Pudotit maahan esineen: " + element
+                items.push(element)
+                itemLocations.push(mapLocation)
+                backPack.splice(backPack.indexOf(element), 1)
+                break
+            } else { warning.innerHTML = "Ei sellaista tavaraa mukana"}
     }
 
     function useItem() {
@@ -202,12 +209,19 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    if (itemLocations.includes(mapLocation)) // Own code for checking possible items
-        gameMessage = "Näkyvissä on " + items[itemLocations.indexOf(mapLocation)]
+    if (itemLocations.includes(mapLocation)) { // Own code for checking possible items
+        let localItems = []
+        for (let element of items) {
+            if (itemLocations[items.indexOf(element)] === mapLocation) {
+                localItems.push(element)
+            }
+        }
+        gameMessage = "Näkyvissä on " + localItems.join(", ")
+    }
 
     // repun sisältö
     if (backPack.length != 0) {
-        inventory.innerHTML = "Repussasi on " + backPack.join()
+        inventory.innerHTML = "Repussasi on " + backPack.join(", ")
     } else { inventory.innerHTML = "Reppusi on tyhjä" }
 
     // palaute pelaajalle 
