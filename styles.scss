@@ -42,9 +42,14 @@ body {
         text-align: center;
         position: relative;
 
+        &:hover .fas {
+            display: initial;
+        }
+
         .fas {
             position: absolute;
             color: rgba($color: #fff, $alpha: 0.6);
+            display: none;
         }
 
         .fa-caret-up {

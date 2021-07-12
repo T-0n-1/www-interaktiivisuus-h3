@@ -55,9 +55,13 @@ body {
   text-align: center;
   position: relative;
 }
+.container-inner:hover .fas {
+  display: initial;
+}
 .container-inner .fas {
   position: absolute;
   color: rgba(255, 255, 255, 0.6);
+  display: none;
 }
 .container-inner .fa-caret-up {
   left: 43%;
