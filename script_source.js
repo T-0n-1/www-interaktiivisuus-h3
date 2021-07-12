@@ -72,21 +72,44 @@ let inventory = document.querySelector("#inventory")
 let inGameMessage = document.querySelector("#gamemessage")
 let warning = document.querySelector("#warning")
 
-/* let north = document.querySelector("")
-let east = document.querySelector("")
-let south = document.querySelector("")
-let west = document.querySelector("")
-north.addEventListener("click", northHandler, false)
-south.addEventListener("click", southHandler, false)
-east.addEventListener("click", eastHandler, false)
-west.addEventListener("click", westHandler, false)
-function northHandler() { action = "pohjoinen" }
-function southHandler() { action = "etelä" }
-function eastHandler() { action = "itä" }
-function westHandler() { action = "länsi" } */
-
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation]
 
+function goNorth() {
+    if (mapLocation >= 3) {
+        mapLocation -= 3
+    } else {
+        warning.innerHTML = blockMessage[mapLocation]
+    }
+    render()
+}
+
+function goSouth() {
+    if (mapLocation <= 5) {
+        mapLocation += 3
+    } else {
+        warning.innerHTML = blockMessage[mapLocation]
+    }
+    render()
+}
+
+function goEast() {
+    if (mapLocation % 3 != 2) {
+        mapLocation += 1
+    } else {
+        warning.innerHTML = blockMessage[mapLocation]
+    }
+    render()
+}
+
+
+function goWest() {
+    if (mapLocation % 3 != 0) {
+        mapLocation -= 1
+    } else {
+        warning.innerHTML = blockMessage[mapLocation]
+    }
+    render()
+}
 
 let input = document.querySelector("#input")
 let button = document.querySelector("button")
@@ -110,8 +133,10 @@ function playGame() {
     warning.innerHTML = ""
     let playersInputArray = playersInput.split(' ')
 
-    action = checkAction()
-    action = action.toString()
+
+
+    /* action = checkAction()
+    action = action.toString() */
 
     // Own function for checking if player's inout includes possible action for player
     function checkAction() {
@@ -139,10 +164,11 @@ function playGame() {
             } else {
                 if (backPack.includes(element)) {
                     break
-                } 
-                else { warning.innerHTML = "Ei tavaraa poimittavana" } 
+                } else {
+                    warning.innerHTML = "Ei tavaraa poimittavana"
+                }
             }
-        }
+    }
 
     function dropItem() {
         for (let element of playersInputArray)
@@ -152,7 +178,9 @@ function playGame() {
                 itemLocations.push(mapLocation)
                 backPack.splice(backPack.indexOf(element), 1)
                 break
-            } else { warning.innerHTML = "Ei sellaista tavaraa mukana"}
+            } else {
+                warning.innerHTML = "Ei sellaista tavaraa mukana"
+            }
     }
 
     function useItem() {
@@ -221,9 +249,9 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    const locationHasItem = itemLocations.some(value => value === mapLocation)  // Own code
-    if (locationHasItem) {                                                      // for checking
-        let localItems = []                                                     // possible items
+    const locationHasItem = itemLocations.some(value => value === mapLocation) // Own code
+    if (locationHasItem) { // for checking
+        let localItems = [] // possible items
         for (let element of items) {
             if (itemLocations[items.indexOf(element)] === mapLocation) {
                 localItems.push(element)
@@ -235,13 +263,14 @@ function render() {
     // repun sisältö
     if (backPack.length != 0) {
         inventory.innerHTML = "Repussasi on " + backPack.join(", ")
-    } else { inventory.innerHTML = "Reppusi on tyhjä" }
+    } else {
+        inventory.innerHTML = "Reppusi on tyhjä"
+    }
 
     // palaute pelaajalle 
     if (gameMessage.startsWith("Poimit")) {
         inGameMessage.innerHTML = "<strong>" + gameMessage + "</strong>"
-    } 
-    else if (gameMessage.startsWith("Näkyvissä")) {
+    } else if (gameMessage.startsWith("Näkyvissä")) {
         inGameMessage.innerHTML = "<i>" + gameMessage + "</i>"
     }
 }

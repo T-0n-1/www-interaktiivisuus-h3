@@ -65,20 +65,48 @@ var output = document.querySelector("#output");
 var inventory = document.querySelector("#inventory");
 var inGameMessage = document.querySelector("#gamemessage");
 var warning = document.querySelector("#warning");
-/* let north = document.querySelector("")
-let east = document.querySelector("")
-let south = document.querySelector("")
-let west = document.querySelector("")
-north.addEventListener("click", northHandler, false)
-south.addEventListener("click", southHandler, false)
-east.addEventListener("click", eastHandler, false)
-west.addEventListener("click", westHandler, false)
-function northHandler() { action = "pohjoinen" }
-function southHandler() { action = "etelä" }
-function eastHandler() { action = "itä" }
-function westHandler() { action = "länsi" } */
-
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
+
+function goNorth() {
+  if (mapLocation >= 3) {
+    mapLocation -= 3;
+  } else {
+    warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  render();
+}
+
+function goSouth() {
+  if (mapLocation <= 5) {
+    mapLocation += 3;
+  } else {
+    warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  render();
+}
+
+function goEast() {
+  if (mapLocation % 3 != 2) {
+    mapLocation += 1;
+  } else {
+    warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  render();
+}
+
+function goWest() {
+  if (mapLocation % 3 != 0) {
+    mapLocation -= 1;
+  } else {
+    warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  render();
+}
+
 var input = document.querySelector("#input");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
@@ -98,8 +126,9 @@ function playGame() {
   action = "";
   warning.innerHTML = "";
   var playersInputArray = playersInput.split(' ');
-  action = checkAction();
-  action = action.toString(); // Own function for checking if player's inout includes possible action for player
+  /* action = checkAction()
+  action = action.toString() */
+  // Own function for checking if player's inout includes possible action for player
 
   function checkAction() {
     var output = [];
