@@ -54,9 +54,7 @@ var playersInput = ""; // Pelin viesti
 var gameMessage = ""; // Pelin sisältämät tavarat
 
 var items = ["huilu", "kivi", "miekka"];
-var itemLocations = [1, 6, 8]; // let knownItems = ["huilu", "kivi", "miekka"]
-// let item = ""
-// Pelaajan inventaario
+var itemLocations = [1, 6, 8]; // Pelaajan inventaario
 
 var backPack = []; // Pelaajan köytössä olevat toiminnot
 
@@ -67,6 +65,19 @@ var output = document.querySelector("#output");
 var inventory = document.querySelector("#inventory");
 var inGameMessage = document.querySelector("#gamemessage");
 var warning = document.querySelector("#warning");
+/* let north = document.querySelector("")
+let east = document.querySelector("")
+let south = document.querySelector("")
+let west = document.querySelector("")
+north.addEventListener("click", northHandler, false)
+south.addEventListener("click", southHandler, false)
+east.addEventListener("click", eastHandler, false)
+west.addEventListener("click", westHandler, false)
+function northHandler() { action = "pohjoinen" }
+function southHandler() { action = "etelä" }
+function eastHandler() { action = "itä" }
+function westHandler() { action = "länsi" } */
+
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
 var input = document.querySelector("#input");
 var button = document.querySelector("button");

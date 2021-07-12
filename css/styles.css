@@ -53,6 +53,27 @@ body {
   width: 304px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+}
+.container-inner .fas {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+}
+.container-inner .fa-caret-up {
+  left: 43%;
+  top: -8%;
+}
+.container-inner .fa-caret-down {
+  left: 43%;
+  bottom: 19%;
+}
+.container-inner .fa-caret-left {
+  left: 0%;
+  top: 24%;
+}
+.container-inner .fa-caret-right {
+  right: -1.4%;
+  top: 24%;
 }
 .container-inner img {
   width: 300px;

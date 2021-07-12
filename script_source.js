@@ -58,8 +58,6 @@ let gameMessage = ""
 // Pelin sisältämät tavarat
 let items = ["huilu", "kivi", "miekka"]
 let itemLocations = [1, 6, 8]
-// let knownItems = ["huilu", "kivi", "miekka"]
-// let item = ""
 
 // Pelaajan inventaario
 let backPack = []
@@ -74,7 +72,21 @@ let inventory = document.querySelector("#inventory")
 let inGameMessage = document.querySelector("#gamemessage")
 let warning = document.querySelector("#warning")
 
+/* let north = document.querySelector("")
+let east = document.querySelector("")
+let south = document.querySelector("")
+let west = document.querySelector("")
+north.addEventListener("click", northHandler, false)
+south.addEventListener("click", southHandler, false)
+east.addEventListener("click", eastHandler, false)
+west.addEventListener("click", westHandler, false)
+function northHandler() { action = "pohjoinen" }
+function southHandler() { action = "etelä" }
+function eastHandler() { action = "itä" }
+function westHandler() { action = "länsi" } */
+
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation]
+
 
 let input = document.querySelector("#input")
 let button = document.querySelector("button")
