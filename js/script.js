@@ -234,9 +234,13 @@ function render() {
 
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
 
-  if (itemLocations.includes(mapLocation)) {
-    // Own code for checking possible items
-    var localItems = [];
+  var locationHasItem = itemLocations.some(function (value) {
+    return value === mapLocation;
+  }); // Own code
+
+  if (locationHasItem) {
+    // for checking
+    var localItems = []; // possible items
 
     var _iterator4 = _createForOfIteratorHelper(items),
         _step4;

@@ -209,8 +209,9 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    if (itemLocations.includes(mapLocation)) { // Own code for checking possible items
-        let localItems = []
+    const locationHasItem = itemLocations.some(value => value === mapLocation)  // Own code
+    if (locationHasItem) {                                                      // for checking
+        let localItems = []                                                     // possible items
         for (let element of items) {
             if (itemLocations[items.indexOf(element)] === mapLocation) {
                 localItems.push(element)
