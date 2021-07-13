@@ -46,7 +46,7 @@ body {
             display: table;
             cursor: pointer;
         }
-
+        
         img {
             width: 300px;
             height: 267px;
@@ -55,16 +55,16 @@ body {
         }
         
         #easyUse {
-            display: flex;
+            display: none;
             justify-content: space-between;     
         }
-
+        
         .fas {
             position: absolute;
             color: rgba($color: #fff, $alpha: 0.6);
             display: none;
         }
-
+        
         .fa-caret-up {
             left: 43%;
             top: -8%;
@@ -82,20 +82,30 @@ body {
             right: 0%;
             top: 24%;
         }
-
+        
         #mouseTake:hover {
             cursor: pointer;
             text-decoration: underline;
         }
-
+        
         #mouseUse:hover {
             cursor: pointer;
             text-decoration: underline;
         }
-
+        
         #mouseDrop:hover {
             cursor: pointer;
             text-decoration: underline;
+        }
+        
+        .checkbox:checked ~ #easyUse {
+            display: flex;
+        }
+        .checkbox:checked ~ input{
+            display: none;
+        }
+        .checkbox:checked ~ button{
+            display: none;
         }
     }
 }
