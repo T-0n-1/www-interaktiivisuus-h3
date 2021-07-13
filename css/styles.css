@@ -57,6 +57,7 @@ body {
 }
 .container-inner:hover .fas {
   display: table;
+  cursor: pointer;
 }
 .container-inner img {
   width: 300px;
@@ -64,12 +65,16 @@ body {
   border: 4px solid rgba(0, 0, 0, 0.3);
   display: block;
 }
+.container-inner #easyUse {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
 .container-inner .fas {
   position: absolute;
   color: rgba(255, 255, 255, 0.6);
   display: none;
-  margin: 0;
-  padding: 0;
 }
 .container-inner .fa-caret-up {
   left: 43%;
@@ -77,14 +82,15 @@ body {
 }
 .container-inner .fa-caret-down {
   left: 43%;
-  bottom: 21%;
+  bottom: 27%;
+  z-index: 5;
 }
 .container-inner .fa-caret-left {
-  left: 0%;
+  left: 1%;
   top: 24%;
 }
 .container-inner .fa-caret-right {
-  right: -1.4%;
+  right: 0%;
   top: 24%;
 }
 

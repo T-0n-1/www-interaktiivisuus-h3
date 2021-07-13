@@ -44,6 +44,7 @@ body {
 
         &:hover .fas {
             display: table;
+            cursor: pointer;
         }
 
         img {
@@ -52,13 +53,16 @@ body {
             border: 4px solid rgba(0,0,0,0.3);
             display: block;
         }
+        
+        #easyUse {
+            display: flex;
+            justify-content: space-between;     
+        }
 
         .fas {
             position: absolute;
             color: rgba($color: #fff, $alpha: 0.6);
             display: none;
-            margin: 0;
-            padding: 0;
         }
 
         .fa-caret-up {
@@ -67,14 +71,15 @@ body {
         }
         .fa-caret-down {
             left: 43%;
-            bottom: 21%;
+            bottom: 27%;
+            z-index: 5;
         }
         .fa-caret-left {
-            left: 0%;
+            left: 1%;
             top: 24%;
         }
         .fa-caret-right {
-            right: -1.4%;
+            right: 0%;
             top: 24%;
         }
     }
