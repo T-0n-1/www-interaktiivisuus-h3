@@ -41,7 +41,7 @@ body {
         margin: 0 auto;
         text-align: center;
         position: relative;
-
+        
         &:hover .fas {
             display: table;
             cursor: pointer;
@@ -54,11 +54,6 @@ body {
             display: block;
         }
         
-        #easyUse {
-            display: none;
-            justify-content: space-between;     
-        }
-        
         .fas {
             position: absolute;
             color: rgba($color: #fff, $alpha: 0.6);
@@ -66,40 +61,55 @@ body {
         }
         
         .fa-caret-up {
-            left: 43%;
-            top: -8%;
+            left: 124px;
+            top: -10%;
         }
         .fa-caret-down {
-            left: 43%;
-            bottom: 27%;
-            z-index: 5;
+            left: 124px;
+            bottom: -8%;
         }
         .fa-caret-left {
             left: 1%;
-            top: 24%;
+            top: 89.5px;
         }
         .fa-caret-right {
             right: 0%;
-            top: 24%;
+            top: 89.5px;
         }
         
-        #mouseTake:hover {
-            cursor: pointer;
-            text-decoration: underline;
+    }
+    
+    .interface {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 304px;
+        margin: 0 auto;
+        text-align: center;
+
+        #easyUse {
+            display: none;
+            justify-content: space-between;     
         }
-        
-        #mouseUse:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        
-        #mouseDrop:hover {
-            cursor: pointer;
-            text-decoration: underline;
+
+        button {
+            background-color: rgb(114, 134, 250);
+            border: none;
+            border-radius: 30px;
+
+            &:hover {
+                text-align: center;
+                letter-spacing: 14px;
+            }
         }
         
         .checkbox:checked ~ #easyUse {
             display: flex;
+            justify-content: space-between;
+        }
+        .checkbox:checked ~ .inputs {
+            flex-direction: column;
+            justify-content: space-between;
         }
         .checkbox:checked ~ input{
             display: none;
@@ -107,16 +117,8 @@ body {
         .checkbox:checked ~ button{
             display: none;
         }
-        .checkbox:checked ~ .fa-caret-down {
-            bottom: 27%;
-        }
-        .checkbox ~ .fa-caret-down {
-            bottom: 23%;
-        }
-        .checkboc:checked ~ .fa-caret-left .fa-caret-right {
-            top: 13%;
-        }
     }
+
 }
 
 .outputHeader {
@@ -127,7 +129,7 @@ body {
 
 p {
     color: #ddd;
-    margin: 8px;
+    margin: 3px;
 }
 
 #output {

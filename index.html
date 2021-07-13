@@ -21,22 +21,24 @@
                 <source srcset="">
                 <img src="" alt="" style="">
             </picture>
-            <p id="inventory"></p>
-            <input title="Check for mouse interface" type="checkbox" id="check" class="checkbox">
-            <input type="text" name="input" id="input" placeholder="Mitä haluat tehdä">
-            <button>Vastaa</button>
-            <p id="easyUse">
-                <strong id="mouseTake" style="color: lightgreen;">[ Poimi ]</strong>
-                <strong id="mouseUse" style="color: lightskyblue;">[ Käytä ]</strong>
-                <strong id="mouseDrop" style="color: rgb(160, 131, 218);">[ Pudota ]</strong>
-            </p>
             <span onclick="goNorth()" class="fas fa-caret-up fa-6x"></span>
             <span onclick="goSouth()" class="fas fa-caret-down fa-6x"></span>
             <span onclick="goEast()" class="fas fa-caret-right fa-6x"></span>
             <span onclick="goWest()" class="fas fa-caret-left fa-6x"></span>
-            <p id="gamemessage"></p>
-            <p id="warning"></p>
         </div>
+            <div class="interface">
+                <p id="inventory"></p>
+                <p id="gamemessage"></p>
+                <input title="Valitse saadaksesi hiirikäyttöliittymän" type="checkbox" id="check" class="checkbox">
+                <input type="text" name="input" id="input" placeholder="Mitä haluat tehdä">
+                <button>Vastaa</button>
+                <p id="easyUse">
+                    <strong id="mouseTake" style="color: lightgreen;">[ Poimi ]</strong>
+                    <strong id="mouseUse" style="color: lightskyblue;">[ Käytä ]</strong>
+                    <strong id="mouseDrop" style="color: rgb(160, 131, 218);">[ Pudota ]</strong>
+                </p>
+                <p id="warning"></p>
+            </div>
     </div>
 
     <script src="/js/script.js"></script>

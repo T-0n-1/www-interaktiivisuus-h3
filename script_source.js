@@ -111,6 +111,17 @@ function goWest() {
     playGame()
 }
 
+function takeItemList() {
+    const checkForItems = itemLocations.some(value => value === mapLocation)  
+    if (checkForItems) {
+        for (let element of items) {
+            if (itemLocations[items.indexOf(element)] === mapLocation) {
+                document.querySelector("#mouseTake").innerHTML += "<br>" + element
+            }
+        }
+    }
+}
+
 let input = document.querySelector("#input")
 let button = document.querySelector("button")
 button.style.cursor = "pointer"
@@ -136,7 +147,6 @@ function playGame() {
     action = checkAction()
     action = action.toString()
 
-    // Own function for checking if player's inout includes possible action for player
     function checkAction() {
         const output = []
         for (let element of playersInputArray)
@@ -251,9 +261,9 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    const locationHasItem = itemLocations.some(value => value === mapLocation)  // Own code
-    if (locationHasItem) {                                                      // for checking
-        let localItems = []                                                     // possible items
+    const locationHasItem = itemLocations.some(value => value === mapLocation) 
+    if (locationHasItem) {                                                      
+        let localItems = []                                                     
         for (let element of items) {
             if (itemLocations[items.indexOf(element)] === mapLocation) {
                 localItems.push(element)

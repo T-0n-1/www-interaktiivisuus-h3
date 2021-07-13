@@ -107,6 +107,22 @@ function goWest() {
   playGame();
 }
 
+function takeItemList() {
+  var checkForItems = itemLocations.some(function (value) {
+    return value === mapLocation;
+  });
+
+  if (checkForItems) {
+    for (var _i = 0, _items = items; _i < _items.length; _i++) {
+      var element = _items[_i];
+
+      if (itemLocations[items.indexOf(element)] === mapLocation) {
+        document.querySelector("#mouseTake").innerHTML += "<br>" + element;
+      }
+    }
+  }
+}
+
 var input = document.querySelector("#input");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
@@ -127,7 +143,7 @@ function playGame() {
   warning.innerHTML = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
-  action = action.toString(); // Own function for checking if player's inout includes possible action for player
+  action = action.toString();
 
   function checkAction() {
     var output = [];
@@ -278,11 +294,10 @@ function render() {
 
   var locationHasItem = itemLocations.some(function (value) {
     return value === mapLocation;
-  }); // Own code
+  });
 
   if (locationHasItem) {
-    // for checking
-    var localItems = []; // possible items
+    var localItems = [];
 
     var _iterator4 = _createForOfIteratorHelper(items),
         _step4;
