@@ -107,6 +107,15 @@ body {
         .checkbox:checked ~ button{
             display: none;
         }
+        .checkbox:checked ~ .fa-caret-down {
+            bottom: 27%;
+        }
+        .checkbox ~ .fa-caret-down {
+            bottom: 23%;
+        }
+        .checkboc:checked ~ .fa-caret-left .fa-caret-right {
+            top: 13%;
+        }
     }
 }
 

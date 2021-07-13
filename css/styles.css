@@ -114,6 +114,15 @@ body {
 .container-inner .checkbox:checked ~ button {
   display: none;
 }
+.container-inner .checkbox:checked ~ .fa-caret-down {
+  bottom: 27%;
+}
+.container-inner .checkbox ~ .fa-caret-down {
+  bottom: 23%;
+}
+.container-inner .checkboc:checked ~ .fa-caret-left .fa-caret-right {
+  top: 13%;
+}
 
 .outputHeader {
   font-weight: bold;
