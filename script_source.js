@@ -78,27 +78,27 @@ function goNorth() {
     if (mapLocation >= 3) {
         mapLocation -= 3
     } else {
-        warning.innerHTML = blockMessage[mapLocation]
+        return warning.innerHTML = blockMessage[mapLocation]
     }
-    render()
+    playGame()
 }
 
 function goSouth() {
     if (mapLocation <= 5) {
         mapLocation += 3
     } else {
-        warning.innerHTML = blockMessage[mapLocation]
+        return warning.innerHTML = blockMessage[mapLocation]
     }
-    render()
+    playGame()
 }
 
 function goEast() {
     if (mapLocation % 3 != 2) {
         mapLocation += 1
     } else {
-        warning.innerHTML = blockMessage[mapLocation]
+        return warning.innerHTML = blockMessage[mapLocation]
     }
-    render()
+    playGame()
 }
 
 
@@ -106,9 +106,9 @@ function goWest() {
     if (mapLocation % 3 != 0) {
         mapLocation -= 1
     } else {
-        warning.innerHTML = blockMessage[mapLocation]
+        return warning.innerHTML = blockMessage[mapLocation]
     }
-    render()
+    playGame()
 }
 
 let input = document.querySelector("#input")
@@ -133,10 +133,8 @@ function playGame() {
     warning.innerHTML = ""
     let playersInputArray = playersInput.split(' ')
 
-
-
-    /* action = checkAction()
-    action = action.toString() */
+    action = checkAction()
+    action = action.toString()
 
     // Own function for checking if player's inout includes possible action for player
     function checkAction() {
@@ -236,11 +234,15 @@ function playGame() {
         default:
             gameMessage = "Tuntematon toiminto"
     }
-
+    
     render()
 }
 
 function render() {
+    // playerInputin tyhjentäminen
+    document.querySelector('#input').value = '';
+    document.querySelector('#input').placeholder = 'Mitä haluat tehdä';
+    
     // kuvien renderöinti
     webpImage.srcset = "images/" + imagesWebp[mapLocation]
     jpgImage.src = "images/" + imagesJpg[mapLocation]
@@ -249,9 +251,9 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    const locationHasItem = itemLocations.some(value => value === mapLocation) // Own code
-    if (locationHasItem) { // for checking
-        let localItems = [] // possible items
+    const locationHasItem = itemLocations.some(value => value === mapLocation)  // Own code
+    if (locationHasItem) {                                                      // for checking
+        let localItems = []                                                     // possible items
         for (let element of items) {
             if (itemLocations[items.indexOf(element)] === mapLocation) {
                 localItems.push(element)

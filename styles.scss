@@ -43,13 +43,22 @@ body {
         position: relative;
 
         &:hover .fas {
-            display: initial;
+            display: table;
+        }
+
+        img {
+            width: 300px;
+            height: 267px;
+            border: 4px solid rgba(0,0,0,0.3);
+            display: block;
         }
 
         .fas {
             position: absolute;
             color: rgba($color: #fff, $alpha: 0.6);
             display: none;
+            margin: 0;
+            padding: 0;
         }
 
         .fa-caret-up {
@@ -58,7 +67,7 @@ body {
         }
         .fa-caret-down {
             left: 43%;
-            bottom: 19%;
+            bottom: 21%;
         }
         .fa-caret-left {
             left: 0%;
@@ -67,13 +76,6 @@ body {
         .fa-caret-right {
             right: -1.4%;
             top: 24%;
-        }
-
-        img {
-            width: 300px;
-            height: 267px;
-            border: 4px solid rgba(0,0,0,0.3);
-            display: block;
         }
     }
 }
