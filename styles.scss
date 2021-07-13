@@ -82,6 +82,21 @@ body {
             right: 0%;
             top: 24%;
         }
+
+        #mouseTake:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #mouseUse:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #mouseDrop:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
 }
 

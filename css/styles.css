@@ -93,6 +93,18 @@ body {
   right: 0%;
   top: 24%;
 }
+.container-inner #mouseTake:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.container-inner #mouseUse:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.container-inner #mouseDrop:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 .outputHeader {
   font-weight: bold;
