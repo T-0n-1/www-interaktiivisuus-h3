@@ -54,7 +54,8 @@ var playersInput = ""; // Pelin viesti
 var gameMessage = ""; // Pelin sisältämät tavarat
 
 var items = ["huilu", "kivi", "miekka"];
-var itemLocations = [1, 6, 8]; // Pelaajan inventaario
+var itemLocations = [1, 6, 8];
+var list = ""; // Pelaajan inventaario
 
 var backPack = []; // Pelaajan köytössä olevat toiminnot
 
@@ -105,22 +106,6 @@ function goWest() {
   }
 
   playGame();
-}
-
-function takeItemList() {
-  var checkForItems = itemLocations.some(function (value) {
-    return value === mapLocation;
-  });
-
-  if (checkForItems) {
-    for (var _i = 0, _items = items; _i < _items.length; _i++) {
-      var element = _items[_i];
-
-      if (itemLocations[items.indexOf(element)] === mapLocation) {
-        document.querySelector("#mouseTake").innerHTML += "<br>" + element;
-      }
-    }
-  }
 }
 
 var input = document.querySelector("#input");
@@ -226,6 +211,57 @@ function playGame() {
 
   function useItem() {}
 
+  function itemsInBackpack() {
+    if (backPack.length !== 0) {
+      list = "<ul>";
+
+      var _iterator4 = _createForOfIteratorHelper(backPack),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var element = _step4.value;
+          list += "<li>" + element + "</li>";
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      list += '</ul>';
+      return list;
+    } else return "";
+  }
+
+  function ableToTake() {
+    if (itemLocations.some(function (value) {
+      return value === mapLocation;
+    })) {
+      list = "<ul>";
+
+      var _iterator5 = _createForOfIteratorHelper(items),
+          _step5;
+
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var element = _step5.value;
+
+          if (itemLocations[items.indexOf(element)] === mapLocation) {
+            list += "<li>" + element + "</li>";
+          }
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+
+      list += '</ul>';
+      return list;
+    } else return "";
+  }
+
   switch (action) {
     case 'pohjoinen':
       if (mapLocation >= 3) {
@@ -279,6 +315,15 @@ function playGame() {
       gameMessage = "Tuntematon toiminto";
   }
 
+  document.querySelector("#mouseTake").innerHTML = "[ Poimi ]";
+  var ableToPickUp = ableToTake();
+  document.querySelector("#mouseTake").innerHTML += ableToPickUp;
+  document.querySelector("#mouseUse").innerHTML = "[ Käytä ]";
+  var usable = itemsInBackpack();
+  document.querySelector("#mouseUse").innerHTML += usable;
+  document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]";
+  var droppable = itemsInBackpack();
+  document.querySelector("#mouseDrop").innerHTML += itemsInBackpack();
   render();
 }
 
@@ -292,28 +337,26 @@ function render() {
 
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
 
-  var locationHasItem = itemLocations.some(function (value) {
+  if (itemLocations.some(function (value) {
     return value === mapLocation;
-  });
-
-  if (locationHasItem) {
+  })) {
     var localItems = [];
 
-    var _iterator4 = _createForOfIteratorHelper(items),
-        _step4;
+    var _iterator6 = _createForOfIteratorHelper(items),
+        _step6;
 
     try {
-      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-        var element = _step4.value;
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var element = _step6.value;
 
         if (itemLocations[items.indexOf(element)] === mapLocation) {
           localItems.push(element);
         }
       }
     } catch (err) {
-      _iterator4.e(err);
+      _iterator6.e(err);
     } finally {
-      _iterator4.f();
+      _iterator6.f();
     }
 
     gameMessage = "Näkyvissä on " + localItems.join(", ");

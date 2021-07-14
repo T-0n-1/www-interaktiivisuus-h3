@@ -59,6 +59,8 @@ let gameMessage = ""
 let items = ["huilu", "kivi", "miekka"]
 let itemLocations = [1, 6, 8]
 
+let list = ``
+
 // Pelaajan inventaario
 let backPack = []
 
@@ -111,17 +113,6 @@ function goWest() {
     playGame()
 }
 
-function takeItemList() {
-    const checkForItems = itemLocations.some(value => value === mapLocation)  
-    if (checkForItems) {
-        for (let element of items) {
-            if (itemLocations[items.indexOf(element)] === mapLocation) {
-                document.querySelector("#mouseTake").innerHTML += "<br>" + element
-            }
-        }
-    }
-}
-
 let input = document.querySelector("#input")
 let button = document.querySelector("button")
 button.style.cursor = "pointer"
@@ -156,6 +147,7 @@ function playGame() {
             output.splice(0, 1, "Ei löytynyt vastaavuutta")
         return output
     }
+
 
     function pickUpItem() {
         for (let element of playersInputArray)
@@ -193,6 +185,30 @@ function playGame() {
 
     function useItem() {
 
+    }
+
+    function itemsInBackpack() {
+        if (backPack.length !== 0) {
+            list = `<ul>`
+            for (let element of backPack) {
+                list += `<li>` + element + `</li>`
+            }
+            list += '</ul>'
+            return list
+        } else return ""
+    }
+
+    function ableToTake() {
+        if (itemLocations.some(value => value === mapLocation)) {
+            list = `<ul>`
+            for (let element of items) {
+                if (itemLocations[items.indexOf(element)] === mapLocation) {
+                    list += `<li>` + element + `</li>`
+                }
+            }
+            list += '</ul>'
+            return list
+        } else return ""
     }
 
     switch (action) {
@@ -244,7 +260,20 @@ function playGame() {
         default:
             gameMessage = "Tuntematon toiminto"
     }
-    
+
+    document.querySelector("#mouseTake").innerHTML = "[ Poimi ]"
+    let ableToPickUp = ableToTake()
+    document.querySelector("#mouseTake").innerHTML += ableToPickUp
+
+    document.querySelector("#mouseUse").innerHTML = "[ Käytä ]"
+    let usable = itemsInBackpack()
+    document.querySelector("#mouseUse").innerHTML += usable
+
+    document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]"
+    let droppable = itemsInBackpack()
+    document.querySelector("#mouseDrop").innerHTML += (itemsInBackpack())
+
+
     render()
 }
 
@@ -252,7 +281,7 @@ function render() {
     // playerInputin tyhjentäminen
     document.querySelector('#input').value = '';
     document.querySelector('#input').placeholder = 'Mitä haluat tehdä';
-    
+
     // kuvien renderöinti
     webpImage.srcset = "images/" + imagesWebp[mapLocation]
     jpgImage.src = "images/" + imagesJpg[mapLocation]
@@ -261,9 +290,8 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    const locationHasItem = itemLocations.some(value => value === mapLocation) 
-    if (locationHasItem) {                                                      
-        let localItems = []                                                     
+    if (itemLocations.some(value => value === mapLocation)) {
+        let localItems = []
         for (let element of items) {
             if (itemLocations[items.indexOf(element)] === mapLocation) {
                 localItems.push(element)
