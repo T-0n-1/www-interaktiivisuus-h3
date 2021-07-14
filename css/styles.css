@@ -129,6 +129,11 @@ body {
 .container .interface .checkbox:checked ~ button {
   display: none;
 }
+.container .interface ul {
+  margin: 4px 0;
+  padding: 0;
+  list-style: none;
+}
 
 .outputHeader {
   font-weight: bold;

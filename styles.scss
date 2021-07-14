@@ -117,8 +117,13 @@ body {
         .checkbox:checked ~ button{
             display: none;
         }
-    }
 
+        ul {
+            margin: 4px 0;
+            padding: 0;
+            list-style: none;
+        }
+    }
 }
 
 .outputHeader {

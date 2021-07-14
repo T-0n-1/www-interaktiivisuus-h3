@@ -112,6 +112,14 @@ var input = document.querySelector("#input");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
+window.addEventListener("keydown", keydownHandler, false); // Tämä tarkistaa Enter-näppäimen painalluksen
+
+function keydownHandler(e) {
+  if (e.keyCode === 13) {
+    playGame();
+  }
+}
+
 var webpImage = document.querySelector("source");
 var jpgImage = document.querySelector("img");
 render();
