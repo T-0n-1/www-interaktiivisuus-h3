@@ -130,9 +130,13 @@ body {
   display: none;
 }
 .container .interface ul {
-  margin: 4px 0;
+  display: none;
+  margin: 10px 0;
   padding: 0;
   list-style: none;
+}
+.container .interface strong:hover ul {
+  display: initial;
 }
 
 .outputHeader {

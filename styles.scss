@@ -119,9 +119,14 @@ body {
         }
 
         ul {
-            margin: 4px 0;
+            display: none;
+            margin: 10px 0;
             padding: 0;
             list-style: none;
+        }
+
+        strong:hover ul {
+            display: initial;
         }
     }
 }
