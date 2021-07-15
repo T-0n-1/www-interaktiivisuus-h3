@@ -1,9 +1,9 @@
 let map = []
 
-map[0] = "Vanha linnantorni"
-map[1] = "Syvä kaivo"
+map[0] = "Nukkuva lohikäärme"
+map[1] = "Vanha linna"
 map[2] = "Aurinkoinen metsäaukio"
-map[3] = "Nukkuva lohikäärme"
+map[3] = "Syvä kaivo"
 map[4] = "Kapea metsäpolku"
 map[5] = "Vanha portti"
 map[6] = "Joen ranta"
@@ -12,10 +12,10 @@ map[8] = "Vanha mökki, sisältä kuuluu hiljaista musiikkia"
 
 let imagesWebp = []
 
-imagesWebp[0] = "torni.webp"
-imagesWebp[1] = "kaivo.webp"
+imagesWebp[0] = "dragon.webp"
+imagesWebp[1] = "torni.webp"
 imagesWebp[2] = "aukio.webp"
-imagesWebp[3] = "dragon.webp"
+imagesWebp[3] = "kaivo.webp"
 imagesWebp[4] = "polku.webp"
 imagesWebp[5] = "portti.webp"
 imagesWebp[6] = "joki.webp"
@@ -24,10 +24,10 @@ imagesWebp[8] = "mokki.webp"
 
 let imagesJpg = []
 
-imagesJpg[0] = "torni.jpg"
-imagesJpg[1] = "kaivo.jpg"
+imagesJpg[0] = "dragon.jpg"
+imagesJpg[1] = "torni.jpg"
 imagesJpg[2] = "aukio.jpg"
-imagesJpg[3] = "dragon.jpg"
+imagesJpg[3] = "kaivo.jpg"
 imagesJpg[4] = "polku.jpg"
 imagesJpg[5] = "portti.jpg"
 imagesJpg[6] = "joki.jpg"
