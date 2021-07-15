@@ -126,6 +126,11 @@ function keydownHandler(e) {
     }
 }
 
+function mouseInterfaceHandler(array) {
+    input.value = array.join(" ")
+    playGame()
+}
+
 
 let webpImage = document.querySelector("source")
 let jpgImage = document.querySelector("img")
@@ -191,11 +196,11 @@ function playGame() {
                 warning.innerHTML = "Ei sellaista tavaraa mukana"
             }
     }
-
+    
     function useItem() {
-
+        
     }
-
+    
     function itemsInBackpack() {
         if (backPack.length !== 0) {
             list = `<ul>`
@@ -212,7 +217,9 @@ function playGame() {
             list = `<ul>`
             for (let element of items) {
                 if (itemLocations[items.indexOf(element)] === mapLocation) {
-                    list += `<li>` + element + `</li>`
+                    playersInputArray = ["poimi"]
+                    playersInputArray.push(element)
+                    list += `<li onmousedown="mouseInterfaceHandler(['poimi', '${element}'])">` + element + `</li>`
                 }
             }
             list += '</ul>'
@@ -280,7 +287,7 @@ function playGame() {
 
     document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]"
     let droppable = itemsInBackpack()
-    document.querySelector("#mouseDrop").innerHTML += (itemsInBackpack())
+    document.querySelector("#mouseDrop").innerHTML += droppable
 
 
     render()

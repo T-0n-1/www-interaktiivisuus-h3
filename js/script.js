@@ -120,6 +120,11 @@ function keydownHandler(e) {
   }
 }
 
+function mouseInterfaceHandler(array) {
+  input.value = array.join(" ");
+  playGame();
+}
+
 var webpImage = document.querySelector("source");
 var jpgImage = document.querySelector("img");
 render();
@@ -256,7 +261,9 @@ function playGame() {
           var element = _step5.value;
 
           if (itemLocations[items.indexOf(element)] === mapLocation) {
-            list += "<li>" + element + "</li>";
+            playersInputArray = ["poimi"];
+            playersInputArray.push(element);
+            list += "<li onmousedown=\"mouseInterfaceHandler(['poimi', '".concat(element, "'])\">") + element + "</li>";
           }
         }
       } catch (err) {
@@ -331,7 +338,7 @@ function playGame() {
   document.querySelector("#mouseUse").innerHTML += usable;
   document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]";
   var droppable = itemsInBackpack();
-  document.querySelector("#mouseDrop").innerHTML += itemsInBackpack();
+  document.querySelector("#mouseDrop").innerHTML += droppable;
   render();
 }
 
