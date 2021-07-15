@@ -125,8 +125,10 @@ function mouseInterfaceHandler(array) {
   playGame();
 }
 
-var webpImage = document.querySelector("source");
-var jpgImage = document.querySelector("img");
+var webpImage = document.querySelector("#gameScreen source");
+var jpgImage = document.querySelector("#gameScreen img");
+var webpCharImage = document.querySelector("#charScreen source");
+var pngCharImage = document.querySelector("#charScreen img");
 render();
 
 function clickHandler() {

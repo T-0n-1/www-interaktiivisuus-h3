@@ -229,9 +229,20 @@
       "oAP" : "\/images\/medieval cleric.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 100,
+      "rq" : 75
+    },
+    "\/images\/medieval cleric.webp" : {
+      "ft" : 8388608,
+      "iS" : 30766,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval cleric.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/medieval grimreaper.png" : {
@@ -360,11 +371,22 @@
       "oA" : 0,
       "oAP" : "\/images\/medieval-soldier.png",
       "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-photo",
       "q" : 90,
+      "rq" : 75
+    },
+    "\/images\/medieval-soldier.webp" : {
+      "ft" : 8388608,
+      "iS" : 26354,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-soldier.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
       "rq" : 75
     },
     "\/images\/mokki.jpg" : {

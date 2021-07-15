@@ -132,8 +132,10 @@ function mouseInterfaceHandler(array) {
 }
 
 
-let webpImage = document.querySelector("source")
-let jpgImage = document.querySelector("img")
+let webpImage = document.querySelector("#gameScreen source")
+let jpgImage = document.querySelector("#gameScreen img")
+let webpCharImage = document.querySelector("#charScreen source")
+let pngCharImage = document.querySelector("#charScreen img")
 
 render()
 
