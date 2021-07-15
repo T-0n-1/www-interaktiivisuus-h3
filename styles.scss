@@ -76,6 +76,32 @@ body {
             right: 0%;
             top: 89.5px;
         }
+
+        .charDiv {
+            position: absolute;
+            top: 0;
+            right: -100vw;
+            // left: 0;
+            width: 290px;
+            height: 275px;
+
+            .spokenText {
+                width: 20vh;
+                position: relative;
+                background-color: rgba($color: #000000, $alpha: 0.3);
+                border-radius: 30px;
+
+                span {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+
+            .charImage {
+                width: 80vh;
+            }
+        }
         
     }
     
