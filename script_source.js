@@ -58,8 +58,8 @@ let gameMessage = ""
 // Pelin sisältämät tavarat
 let items = ["huilu", "kivi", "miekka"]
 let itemLocations = [1, 6, 8]
-// let knownItems = ["huilu", "kivi", "miekka"]
-// let item = ""
+
+let list = ``
 
 // Pelaajan inventaario
 let backPack = []
@@ -76,10 +76,61 @@ let warning = document.querySelector("#warning")
 
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation]
 
+function goNorth() {
+    if (mapLocation >= 3) {
+        mapLocation -= 3
+    } else {
+        return warning.innerHTML = blockMessage[mapLocation]
+    }
+    playGame()
+}
+
+function goSouth() {
+    if (mapLocation <= 5) {
+        mapLocation += 3
+    } else {
+        return warning.innerHTML = blockMessage[mapLocation]
+    }
+    playGame()
+}
+
+function goEast() {
+    if (mapLocation % 3 != 2) {
+        mapLocation += 1
+    } else {
+        return warning.innerHTML = blockMessage[mapLocation]
+    }
+    playGame()
+}
+
+
+function goWest() {
+    if (mapLocation % 3 != 0) {
+        mapLocation -= 1
+    } else {
+        return warning.innerHTML = blockMessage[mapLocation]
+    }
+    playGame()
+}
+
 let input = document.querySelector("#input")
 let button = document.querySelector("button")
 button.style.cursor = "pointer"
 button.addEventListener("click", clickHandler, false)
+window.addEventListener("keydown", keydownHandler, false);
+
+// Tämä tarkistaa Enter-näppäimen painalluksen
+function keydownHandler(e) {
+    if (e.keyCode === 13) {
+        playGame();
+    }
+}
+
+function mouseInterfaceHandler(array) {
+    input.value = array.join(" ")
+    playGame()
+}
+
 
 let webpImage = document.querySelector("source")
 let jpgImage = document.querySelector("img")
@@ -101,7 +152,6 @@ function playGame() {
     action = checkAction()
     action = action.toString()
 
-    // Own function for checking if player's inout includes possible action for player
     function checkAction() {
         const output = []
         for (let element of playersInputArray)
@@ -111,6 +161,7 @@ function playGame() {
             output.splice(0, 1, "Ei löytynyt vastaavuutta")
         return output
     }
+
 
     function pickUpItem() {
         for (let element of playersInputArray)
@@ -127,10 +178,11 @@ function playGame() {
             } else {
                 if (backPack.includes(element)) {
                     break
-                } 
-                else { warning.innerHTML = "Ei tavaraa poimittavana" } 
+                } else {
+                    warning.innerHTML = "Ei tavaraa poimittavana"
+                }
             }
-        }
+    }
 
     function dropItem() {
         for (let element of playersInputArray)
@@ -140,11 +192,39 @@ function playGame() {
                 itemLocations.push(mapLocation)
                 backPack.splice(backPack.indexOf(element), 1)
                 break
-            } else { warning.innerHTML = "Ei sellaista tavaraa mukana"}
+            } else {
+                warning.innerHTML = "Ei sellaista tavaraa mukana"
+            }
+    }
+    
+    function useItem() {
+        
+    }
+    
+    function itemsInBackpack(command) {
+        if (backPack.length !== 0) {
+            list = `<ul>`
+            for (let element of backPack) {
+                list += `<li onmousedown="mouseInterfaceHandler(['${command}', '${element}'])">` + element + `</li>`
+            }
+            list += '</ul>'
+            return list
+        } else return ""
     }
 
-    function useItem() {
-
+    function ableToTake() {
+        if (itemLocations.some(value => value === mapLocation)) {
+            list = `<ul>`
+            for (let element of items) {
+                if (itemLocations[items.indexOf(element)] === mapLocation) {
+                    playersInputArray = ["poimi"]
+                    playersInputArray.push(element)
+                    list += `<li onmousedown="mouseInterfaceHandler(['poimi', '${element}'])">` + element + `</li>`
+                }
+            }
+            list += '</ul>'
+            return list
+        } else return ""
     }
 
     switch (action) {
@@ -197,10 +277,27 @@ function playGame() {
             gameMessage = "Tuntematon toiminto"
     }
 
+    document.querySelector("#mouseTake").innerHTML = "[ Poimi ]"
+    let ableToPickUp = ableToTake()
+    document.querySelector("#mouseTake").innerHTML += ableToPickUp
+
+    document.querySelector("#mouseUse").innerHTML = "[ Käytä ]"
+    let usable = itemsInBackpack('käytä')
+    document.querySelector("#mouseUse").innerHTML += usable
+
+    document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]"
+    let droppable = itemsInBackpack('pudota')
+    document.querySelector("#mouseDrop").innerHTML += droppable
+
+
     render()
 }
 
 function render() {
+    // playerInputin tyhjentäminen
+    document.querySelector('#input').value = '';
+    document.querySelector('#input').placeholder = 'Mitä haluat tehdä';
+
     // kuvien renderöinti
     webpImage.srcset = "images/" + imagesWebp[mapLocation]
     jpgImage.src = "images/" + imagesJpg[mapLocation]
@@ -209,9 +306,8 @@ function render() {
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
 
     // mahdolliset esineet peliruudulla
-    const locationHasItem = itemLocations.some(value => value === mapLocation)  // Own code
-    if (locationHasItem) {                                                      // for checking
-        let localItems = []                                                     // possible items
+    if (itemLocations.some(value => value === mapLocation)) {
+        let localItems = []
         for (let element of items) {
             if (itemLocations[items.indexOf(element)] === mapLocation) {
                 localItems.push(element)
@@ -223,13 +319,14 @@ function render() {
     // repun sisältö
     if (backPack.length != 0) {
         inventory.innerHTML = "Repussasi on " + backPack.join(", ")
-    } else { inventory.innerHTML = "Reppusi on tyhjä" }
+    } else {
+        inventory.innerHTML = "Reppusi on tyhjä"
+    }
 
     // palaute pelaajalle 
     if (gameMessage.startsWith("Poimit")) {
         inGameMessage.innerHTML = "<strong>" + gameMessage + "</strong>"
-    } 
-    else if (gameMessage.startsWith("Näkyvissä")) {
+    } else if (gameMessage.startsWith("Näkyvissä")) {
         inGameMessage.innerHTML = "<i>" + gameMessage + "</i>"
     }
 }

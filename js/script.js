@@ -54,9 +54,8 @@ var playersInput = ""; // Pelin viesti
 var gameMessage = ""; // Pelin sisältämät tavarat
 
 var items = ["huilu", "kivi", "miekka"];
-var itemLocations = [1, 6, 8]; // let knownItems = ["huilu", "kivi", "miekka"]
-// let item = ""
-// Pelaajan inventaario
+var itemLocations = [1, 6, 8];
+var list = ""; // Pelaajan inventaario
 
 var backPack = []; // Pelaajan köytössä olevat toiminnot
 
@@ -68,10 +67,64 @@ var inventory = document.querySelector("#inventory");
 var inGameMessage = document.querySelector("#gamemessage");
 var warning = document.querySelector("#warning");
 output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[mapLocation];
+
+function goNorth() {
+  if (mapLocation >= 3) {
+    mapLocation -= 3;
+  } else {
+    return warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  playGame();
+}
+
+function goSouth() {
+  if (mapLocation <= 5) {
+    mapLocation += 3;
+  } else {
+    return warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  playGame();
+}
+
+function goEast() {
+  if (mapLocation % 3 != 2) {
+    mapLocation += 1;
+  } else {
+    return warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  playGame();
+}
+
+function goWest() {
+  if (mapLocation % 3 != 0) {
+    mapLocation -= 1;
+  } else {
+    return warning.innerHTML = blockMessage[mapLocation];
+  }
+
+  playGame();
+}
+
 var input = document.querySelector("#input");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
+window.addEventListener("keydown", keydownHandler, false); // Tämä tarkistaa Enter-näppäimen painalluksen
+
+function keydownHandler(e) {
+  if (e.keyCode === 13) {
+    playGame();
+  }
+}
+
+function mouseInterfaceHandler(array) {
+  input.value = array.join(" ");
+  playGame();
+}
+
 var webpImage = document.querySelector("source");
 var jpgImage = document.querySelector("img");
 render();
@@ -88,7 +141,7 @@ function playGame() {
   warning.innerHTML = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
-  action = action.toString(); // Own function for checking if player's inout includes possible action for player
+  action = action.toString();
 
   function checkAction() {
     var output = [];
@@ -171,6 +224,59 @@ function playGame() {
 
   function useItem() {}
 
+  function itemsInBackpack(command) {
+    if (backPack.length !== 0) {
+      list = "<ul>";
+
+      var _iterator4 = _createForOfIteratorHelper(backPack),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var element = _step4.value;
+          list += "<li onmousedown=\"mouseInterfaceHandler(['".concat(command, "', '").concat(element, "'])\">") + element + "</li>";
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      list += '</ul>';
+      return list;
+    } else return "";
+  }
+
+  function ableToTake() {
+    if (itemLocations.some(function (value) {
+      return value === mapLocation;
+    })) {
+      list = "<ul>";
+
+      var _iterator5 = _createForOfIteratorHelper(items),
+          _step5;
+
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var element = _step5.value;
+
+          if (itemLocations[items.indexOf(element)] === mapLocation) {
+            playersInputArray = ["poimi"];
+            playersInputArray.push(element);
+            list += "<li onmousedown=\"mouseInterfaceHandler(['poimi', '".concat(element, "'])\">") + element + "</li>";
+          }
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+
+      list += '</ul>';
+      return list;
+    } else return "";
+  }
+
   switch (action) {
     case 'pohjoinen':
       if (mapLocation >= 3) {
@@ -224,39 +330,48 @@ function playGame() {
       gameMessage = "Tuntematon toiminto";
   }
 
+  document.querySelector("#mouseTake").innerHTML = "[ Poimi ]";
+  var ableToPickUp = ableToTake();
+  document.querySelector("#mouseTake").innerHTML += ableToPickUp;
+  document.querySelector("#mouseUse").innerHTML = "[ Käytä ]";
+  var usable = itemsInBackpack('käytä');
+  document.querySelector("#mouseUse").innerHTML += usable;
+  document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]";
+  var droppable = itemsInBackpack('pudota');
+  document.querySelector("#mouseDrop").innerHTML += droppable;
   render();
 }
 
 function render() {
-  // kuvien renderöinti
+  // playerInputin tyhjentäminen
+  document.querySelector('#input').value = '';
+  document.querySelector('#input').placeholder = 'Mitä haluat tehdä'; // kuvien renderöinti
+
   webpImage.srcset = "images/" + imagesWebp[mapLocation];
   jpgImage.src = "images/" + imagesJpg[mapLocation]; // sijainnin päivitys pelaajalle
 
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
 
-  var locationHasItem = itemLocations.some(function (value) {
+  if (itemLocations.some(function (value) {
     return value === mapLocation;
-  }); // Own code
+  })) {
+    var localItems = [];
 
-  if (locationHasItem) {
-    // for checking
-    var localItems = []; // possible items
-
-    var _iterator4 = _createForOfIteratorHelper(items),
-        _step4;
+    var _iterator6 = _createForOfIteratorHelper(items),
+        _step6;
 
     try {
-      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-        var element = _step4.value;
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var element = _step6.value;
 
         if (itemLocations[items.indexOf(element)] === mapLocation) {
           localItems.push(element);
         }
       }
     } catch (err) {
-      _iterator4.e(err);
+      _iterator6.e(err);
     } finally {
-      _iterator4.f();
+      _iterator6.f();
     }
 
     gameMessage = "Näkyvissä on " + localItems.join(", ");

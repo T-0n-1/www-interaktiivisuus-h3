@@ -7,22 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tekstipohjainen seikkailupeli</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" 
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" 
+        crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container">
         <p id="output"></p>
         <div class="container-inner">
-            <picture>
+            <picture">
                 <source srcset="">
                 <img src="" alt="" style="">
             </picture>
-            <input type="text" name="input" id="input" placeholder="Mitä haluat tehdä">
-            <button>Vastaa</button>
-            <p id="inventory"></p>
-            <p id="gamemessage"></p>
-            <p id="warning"></p>
+            <span onclick="goNorth()" class="fas fa-caret-up fa-6x"></span>
+            <span onclick="goSouth()" class="fas fa-caret-down fa-6x"></span>
+            <span onclick="goEast()" class="fas fa-caret-right fa-6x"></span>
+            <span onclick="goWest()" class="fas fa-caret-left fa-6x"></span>
         </div>
+            <div class="interface">
+                <p id="inventory"></p>
+                <p id="gamemessage"></p>
+                <input title="Valitse saadaksesi hiirikäyttöliittymän" type="checkbox" id="check" class="checkbox">
+                <input type="text" name="input" id="input" placeholder="Mitä haluat tehdä">
+                <button>Vastaa</button>
+                <p id="easyUse">
+                    <strong id="mouseTake" style="color: lightgreen; cursor: pointer;">[ Poimi ]</strong>
+                    <strong id="mouseUse" style="color: lightskyblue; cursor: pointer;">[ Käytä ]</strong>
+                    <strong id="mouseDrop" style="color: rgb(160, 131, 218); cursor: pointer;">[ Pudota ]</strong>
+                </p>
+                <p id="warning"></p>
+            </div>
     </div>
 
     <script src="/js/script.js"></script>
