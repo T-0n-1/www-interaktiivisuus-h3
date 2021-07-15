@@ -87,15 +87,15 @@ bardTalk[1] = "Sinä löysit sen - minun rakkaimman koruni. Minun rakkaimman, ka
 
 // Viesti joka näyteteään pelaajan valitseman suunnan ollessa estetty
 let blockMessage = []
-blockMessage[0] = "Tornin takana sijaitseva korkea jyrkänne estää liikkumisen siihen suuntaan"
-blockMessage[1] = "Salaperäinen voima estää liikkumesi tuohon suuntaan"
-blockMessage[2] = "Vaikeakulkuinen ryteikkö estää kulkemisen"
-blockMessage[3] = "Et pääse kiertämään lohikäärmettä valitsemastasi suunnasta"
+blockMessage[0] = "Et onnistu kiertämään lohikäärmettä herättämättä sitä"
+blockMessage[1] = "Linnaa ympäröivä vallihauta estää liikkumisen siihen suuntaan"
+blockMessage[2] = "Et halua häiritä noitaa toimissaan"
+blockMessage[3] = "Rakennukset estävät kulkusi siihen suuntaan"
 blockMessage[4] = " "
-blockMessage[5] = "Portti sulkeutuu ja estää pääsysi"
+blockMessage[5] = "Olet astumassa portista, mutta yhtäkkiä kuninkaan sotilas astuu eteesi"
 blockMessage[6] = "Voimakas virtaus estää joen ylityken"
 blockMessage[7] = "Metsä on liian tiheä kuljettavaksi"
-blockMessage[8] = "Kauhu jähmettää sinut paikallesi etkä tohdi kulkea pidemmälle tähän suuntaan"
+blockMessage[8] = "Bardi pysäyttää sinut pyytäen kääntymään takaisin ja hoitamaan asiat kuntoon"
 
 // Sijainti pelin alussa
 let mapLocation = 4
