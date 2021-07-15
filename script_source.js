@@ -201,11 +201,11 @@ function playGame() {
         
     }
     
-    function itemsInBackpack() {
+    function itemsInBackpack(command) {
         if (backPack.length !== 0) {
             list = `<ul>`
             for (let element of backPack) {
-                list += `<li>` + element + `</li>`
+                list += `<li onmousedown="mouseInterfaceHandler(['${command}', '${element}'])">` + element + `</li>`
             }
             list += '</ul>'
             return list
@@ -282,11 +282,11 @@ function playGame() {
     document.querySelector("#mouseTake").innerHTML += ableToPickUp
 
     document.querySelector("#mouseUse").innerHTML = "[ Käytä ]"
-    let usable = itemsInBackpack()
+    let usable = itemsInBackpack('käytä')
     document.querySelector("#mouseUse").innerHTML += usable
 
     document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]"
-    let droppable = itemsInBackpack()
+    let droppable = itemsInBackpack('pudota')
     document.querySelector("#mouseDrop").innerHTML += droppable
 
 

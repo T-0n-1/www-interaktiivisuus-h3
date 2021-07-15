@@ -224,7 +224,7 @@ function playGame() {
 
   function useItem() {}
 
-  function itemsInBackpack() {
+  function itemsInBackpack(command) {
     if (backPack.length !== 0) {
       list = "<ul>";
 
@@ -234,7 +234,7 @@ function playGame() {
       try {
         for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
           var element = _step4.value;
-          list += "<li>" + element + "</li>";
+          list += "<li onmousedown=\"mouseInterfaceHandler(['".concat(command, "', '").concat(element, "'])\">") + element + "</li>";
         }
       } catch (err) {
         _iterator4.e(err);
@@ -334,10 +334,10 @@ function playGame() {
   var ableToPickUp = ableToTake();
   document.querySelector("#mouseTake").innerHTML += ableToPickUp;
   document.querySelector("#mouseUse").innerHTML = "[ Käytä ]";
-  var usable = itemsInBackpack();
+  var usable = itemsInBackpack('käytä');
   document.querySelector("#mouseUse").innerHTML += usable;
   document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]";
-  var droppable = itemsInBackpack();
+  var droppable = itemsInBackpack('pudota');
   document.querySelector("#mouseDrop").innerHTML += droppable;
   render();
 }
