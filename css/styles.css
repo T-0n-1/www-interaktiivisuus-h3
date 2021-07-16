@@ -42,9 +42,9 @@ body {
   padding: 10px;
   width: 500px;
   height: 480px;
-  background-image: -webkit-image-set(url("/images/background2.webp"), url("/images/background2.webp") type("image/webp"), url("/images/background2.jpg"), url("/images/background2.jpg") type("image/jpeg"));
-  background-image: image-set(url("/images/background2.webp"), url("/images/background2.webp") type("image/webp"), url("/images/background2.jpg"), url("/images/background2.jpg") type("image/jpeg"));
-  background-image: url("/images/background2.webp");
+  background-image: -webkit-image-set(url("../images/background2.webp"), url("../images/background2.webp") type("image/webp"), url("../images/background2.jpg"), url("../images/background2.jpg") type("image/jpeg"));
+  background-image: image-set(url("../images/background2.webp"), url("../images/background2.webp") type("image/webp"), url("../images/background2.jpg"), url("../images/background2.jpg") type("image/jpeg"));
+  background-image: url("../images/background2.webp");
   background-position-x: center;
   -webkit-animation: moveBG 18s linear 0s infinite forwards;
           animation: moveBG 18s linear 0s infinite forwards;
@@ -106,19 +106,19 @@ body {
   color: white;
   cursor: pointer;
 }
-.container-inner .charDiv .spokenText {
-  width: 20vh;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.3);
+.container-inner .charDiv .spokenText p {
+  bottom: 0;
+  height: 48px;
+  overflow: scroll;
+  background-color: black;
   border-radius: 30px;
 }
-.container-inner .charDiv .charImage {
-  width: 80vh;
+.container-inner .charDiv .charScreen {
+  height: 220px;
 }
-.container-inner .charDiv .charImage img {
-  height: 100vh;
+.container-inner .charDiv .charScreen img {
+  height: 80px;
   width: auto;
-  float: right;
 }
 .container .interface {
   display: -webkit-flex;

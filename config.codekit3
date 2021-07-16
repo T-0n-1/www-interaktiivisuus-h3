@@ -253,11 +253,11 @@
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/medieval-messenger.png" : {
+    "\/images\/medieval-king.png" : {
       "ft" : 32768,
-      "iS" : 44197,
+      "iS" : 251912,
       "oA" : 0,
-      "oAP" : "\/images\/medieval-messenger.png",
+      "oAP" : "\/images\/medieval-king.png",
       "oF" : 0,
       "oIPL" : 1,
       "opt" : 1,
@@ -266,9 +266,33 @@
       "q" : 90,
       "rq" : 75
     },
+    "\/images\/medieval-king.webp" : {
+      "ft" : 8388608,
+      "iS" : 31924,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-king.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/images\/medieval-messenger.png" : {
+      "ft" : 32768,
+      "iS" : 46190,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-messenger.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-photo",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/images\/medieval-messenger.webp" : {
       "ft" : 8388608,
-      "iS" : 19578,
+      "iS" : 30432,
       "oA" : 0,
       "oAP" : "\/images\/medieval-messenger.webp",
       "oF" : 0,
@@ -497,9 +521,9 @@
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/index.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/js\/script.js" : {
       "bF" : 0,

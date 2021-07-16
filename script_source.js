@@ -40,6 +40,7 @@ charWebp[4] = "medieval-wizard.webp"
 charWebp[5] = "medieval-soldier.webp"
 charWebp[6] = "medieval-bard.webp"
 charWebp[7] = "medieval-messenger.webp"
+charWebp[8] = "medieval-king.webp"
 
 let charPng = []
 charPng[0] = "medieval-grimreaper.png"
@@ -50,13 +51,34 @@ charPng[4] = "medieval-wizard.png"
 charPng[5] = "medieval-soldier.png"
 charPng[6] = "medieval-bard.png"
 charPng[7] = "medieval-messenger.png"
+charPng[8] = "medieval-king.png"
 
-let charLocations = [0, undefined, 3, 2, 6, 5, 8, 4]
+let charLocations = [undefined, undefined, 3, 2, 6, 5, 8, 4, 1]
 
 let webpImage = document.querySelector("#gameScreen source")
 let jpgImage = document.querySelector("#gameScreen img")
 let webpCharImage = document.querySelector("#charScreen source")
 let pngCharImage = document.querySelector("#charScreen img")
+let speak = document.querySelector("#spokenText p")
+
+function charInteraction() {
+    if (charLocations.some(value => value === mapLocation)) {
+        document.querySelector(".charDiv").style.display = "block"
+        document.querySelector(".container-inner span").style.display = "none"
+        for (let element of charLocations) {
+            if (element === mapLocation) {
+                webpCharImage.srcset = "../images/" + charWebp[charLocations.indexOf(element)]
+                pngCharImage.src = "../images/" + charPng[charLocations.indexOf(element)]
+                speak.innerHTML = talk[charLocations.indexOf(element)]
+            }
+        }
+    }
+}
+
+function closeCharDiv() {
+    document.querySelector(".charDiv").style.display = "none"
+    document.querySelector(".fas").style.display = "initial"
+}
 
 // Hahmojen puheet
 let talk = []
@@ -67,7 +89,8 @@ talk[3] = "Hei vaeltaja.. poistuthan pikaisesti minua häiritsemättä.. etsin y
 talk[4] = "Kuinka minä vihaankaan kuningasta, hän erotti minut kuninkaan velhon virasta epäonnistuttuani parantamaan hänen vaimonsa. Minä saan lopulta sanoa viimeisen sanan.."
 talk[5] = "Kuninkaamme käskystä estämme poistumisenne kunnes asianne täällä hänen kanssaan on hoidettu."
 talk[6] = "Ollos tervetullut vaeltaja. jää kuuntelemaan surusointuisia säveliäni. Menetin elämäni rakkauden lohikäärmelle ja kaiken lisäksi kadotin rakkaimman muistoni hänestä - korun, jonka sisällä oli kaiverrus rakkaastani"
-talk[7] = "Olen valtakuntamme kuninkaan viestinviejä. Hän on käskenyt tuomaan teille käskynsä tappaa valtakuntaa terrorisoiva lohikäärme. Lohikäärmeen ensimmäisiin uhreihin kuuluu kadonnut kuninkaan tytär eikä kuningas surunsa vuoksi suostu tapaamaan ketään."
+talk[7] = "Olen valtakuntamme kuninkaan viestinviejä. Hän on antanut käskyn tulla käskemään teidät puheillensa välittömästi. Asia koskee varmasti valtakuntaamme terrorisoivaa petoa."
+talk[8] = "Hei vaeltaja, valtakuntaamme riivaa peto, jonka yhtenä ensimmäisistä uhreista oli tyttäreni. Käskyni on tuhota tuo peto ja vapauttaa valtakuntamme sen surua ja kuolemaa aiheuttavasta ikeestä."
 
 // Viesti joka näyteteään pelaajan valitseman suunnan ollessa estetty
 let blockMessage = []
@@ -165,8 +188,6 @@ function mouseInterfaceHandler(array) {
     input.value = array.join(" ")
     playGame()
 }
-
-
 
 render()
 
@@ -309,20 +330,21 @@ function playGame() {
         default:
             gameMessage = "Tuntematon toiminto"
     }
-
+    
+    
     document.querySelector("#mouseTake").innerHTML = "[ Poimi ]"
     let ableToPickUp = ableToTake()
     document.querySelector("#mouseTake").innerHTML += ableToPickUp
-
+    
     document.querySelector("#mouseUse").innerHTML = "[ Käytä ]"
     let usable = itemsInBackpack('käytä')
     document.querySelector("#mouseUse").innerHTML += usable
-
+    
     document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]"
     let droppable = itemsInBackpack('pudota')
     document.querySelector("#mouseDrop").innerHTML += droppable
-
-
+    
+    
     render()
 }
 
@@ -330,10 +352,13 @@ function render() {
     // playerInputin tyhjentäminen
     document.querySelector('#input').value = '';
     document.querySelector('#input').placeholder = 'Mitä haluat tehdä';
-
+    
     // kuvien renderöinti
     webpImage.srcset = "images/" + imagesWebp[mapLocation]
     jpgImage.src = "images/" + imagesJpg[mapLocation]
+    
+    // NPC hahmot
+    charInteraction()
 
     // sijainnin päivitys pelaajalle
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]

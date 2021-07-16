@@ -45,6 +45,7 @@ charWebp[4] = "medieval-wizard.webp";
 charWebp[5] = "medieval-soldier.webp";
 charWebp[6] = "medieval-bard.webp";
 charWebp[7] = "medieval-messenger.webp";
+charWebp[8] = "medieval-king.webp";
 var charPng = [];
 charPng[0] = "medieval-grimreaper.png";
 charPng[1] = "medieval-princess.png";
@@ -54,11 +55,47 @@ charPng[4] = "medieval-wizard.png";
 charPng[5] = "medieval-soldier.png";
 charPng[6] = "medieval-bard.png";
 charPng[7] = "medieval-messenger.png";
-var charLocations = [0, undefined, 3, 2, 6, 5, 8, 4];
+charPng[8] = "medieval-king.png";
+var charLocations = [undefined, undefined, 3, 2, 6, 5, 8, 4, 1];
 var webpImage = document.querySelector("#gameScreen source");
 var jpgImage = document.querySelector("#gameScreen img");
 var webpCharImage = document.querySelector("#charScreen source");
-var pngCharImage = document.querySelector("#charScreen img"); // Hahmojen puheet
+var pngCharImage = document.querySelector("#charScreen img");
+var speak = document.querySelector("#spokenText p");
+
+function charInteraction() {
+  if (charLocations.some(function (value) {
+    return value === mapLocation;
+  })) {
+    document.querySelector(".charDiv").style.display = "block";
+    document.querySelector(".container-inner span").style.display = "none";
+
+    var _iterator = _createForOfIteratorHelper(charLocations),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var element = _step.value;
+
+        if (element === mapLocation) {
+          webpCharImage.srcset = "../images/" + charWebp[charLocations.indexOf(element)];
+          pngCharImage.src = "../images/" + charPng[charLocations.indexOf(element)];
+          speak.innerHTML = talk[charLocations.indexOf(element)];
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+}
+
+function closeCharDiv() {
+  document.querySelector(".charDiv").style.display = "none";
+  document.querySelector(".fas").style.display = "initial";
+} // Hahmojen puheet
+
 
 var talk = [];
 talk[0] = "* Kuolema ei pidä minkäänlaista ääntä tullessaan hakemaan sinua *";
@@ -68,7 +105,8 @@ talk[3] = "Hei vaeltaja.. poistuthan pikaisesti minua häiritsemättä.. etsin y
 talk[4] = "Kuinka minä vihaankaan kuningasta, hän erotti minut kuninkaan velhon virasta epäonnistuttuani parantamaan hänen vaimonsa. Minä saan lopulta sanoa viimeisen sanan..";
 talk[5] = "Kuninkaamme käskystä estämme poistumisenne kunnes asianne täällä hänen kanssaan on hoidettu.";
 talk[6] = "Ollos tervetullut vaeltaja. jää kuuntelemaan surusointuisia säveliäni. Menetin elämäni rakkauden lohikäärmelle ja kaiken lisäksi kadotin rakkaimman muistoni hänestä - korun, jonka sisällä oli kaiverrus rakkaastani";
-talk[7] = "Olen valtakuntamme kuninkaan viestinviejä. Hän on käskenyt tuomaan teille käskynsä tappaa valtakuntaa terrorisoiva lohikäärme. Lohikäärmeen ensimmäisiin uhreihin kuuluu kadonnut kuninkaan tytär eikä kuningas surunsa vuoksi suostu tapaamaan ketään."; // Viesti joka näyteteään pelaajan valitseman suunnan ollessa estetty
+talk[7] = "Olen valtakuntamme kuninkaan viestinviejä. Hän on antanut käskyn tulla käskemään teidät puheillensa välittömästi. Asia koskee varmasti valtakuntaamme terrorisoivaa petoa.";
+talk[8] = "Hei vaeltaja, valtakuntaamme riivaa peto, jonka yhtenä ensimmäisistä uhreista oli tyttäreni. Käskyni on tuhota tuo peto ja vapauttaa valtakuntamme sen surua ja kuolemaa aiheuttavasta ikeestä."; // Viesti joka näyteteään pelaajan valitseman suunnan ollessa estetty
 
 var blockMessage = [];
 blockMessage[0] = "Et onnistu kiertämään lohikäärmettä herättämättä sitä";
@@ -178,30 +216,30 @@ function playGame() {
   function checkAction() {
     var output = [];
 
-    var _iterator = _createForOfIteratorHelper(playersInputArray),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var element = _step.value;
-        if (actionsForPlayer.includes(element)) output.splice(0, 1, element);else if (output === []) output.splice(0, 1, "Ei löytynyt vastaavuutta");
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    return output;
-  }
-
-  function pickUpItem() {
     var _iterator2 = _createForOfIteratorHelper(playersInputArray),
         _step2;
 
     try {
       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
         var element = _step2.value;
+        if (actionsForPlayer.includes(element)) output.splice(0, 1, element);else if (output === []) output.splice(0, 1, "Ei löytynyt vastaavuutta");
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    return output;
+  }
+
+  function pickUpItem() {
+    var _iterator3 = _createForOfIteratorHelper(playersInputArray),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var element = _step3.value;
 
         if (items.includes(element)) {
           var i = items.indexOf(element);
@@ -223,19 +261,19 @@ function playGame() {
         }
       }
     } catch (err) {
-      _iterator2.e(err);
+      _iterator3.e(err);
     } finally {
-      _iterator2.f();
+      _iterator3.f();
     }
   }
 
   function dropItem() {
-    var _iterator3 = _createForOfIteratorHelper(playersInputArray),
-        _step3;
+    var _iterator4 = _createForOfIteratorHelper(playersInputArray),
+        _step4;
 
     try {
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        var element = _step3.value;
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+        var element = _step4.value;
 
         if (backPack.includes(element)) {
           warning.innerHTML = "Pudotit maahan esineen: " + element;
@@ -248,9 +286,9 @@ function playGame() {
         }
       }
     } catch (err) {
-      _iterator3.e(err);
+      _iterator4.e(err);
     } finally {
-      _iterator3.f();
+      _iterator4.f();
     }
   }
 
@@ -260,18 +298,18 @@ function playGame() {
     if (backPack.length !== 0) {
       list = "<ul>";
 
-      var _iterator4 = _createForOfIteratorHelper(backPack),
-          _step4;
+      var _iterator5 = _createForOfIteratorHelper(backPack),
+          _step5;
 
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var element = _step4.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var element = _step5.value;
           list += "<li onmousedown=\"mouseInterfaceHandler(['".concat(command, "', '").concat(element, "'])\">") + element + "</li>";
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator4.f();
+        _iterator5.f();
       }
 
       list += '</ul>';
@@ -285,12 +323,12 @@ function playGame() {
     })) {
       list = "<ul>";
 
-      var _iterator5 = _createForOfIteratorHelper(items),
-          _step5;
+      var _iterator6 = _createForOfIteratorHelper(items),
+          _step6;
 
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var element = _step5.value;
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var element = _step6.value;
 
           if (itemLocations[items.indexOf(element)] === mapLocation) {
             playersInputArray = ["poimi"];
@@ -299,9 +337,9 @@ function playGame() {
           }
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator5.f();
+        _iterator6.f();
       }
 
       list += '</ul>';
@@ -380,7 +418,9 @@ function render() {
   document.querySelector('#input').placeholder = 'Mitä haluat tehdä'; // kuvien renderöinti
 
   webpImage.srcset = "images/" + imagesWebp[mapLocation];
-  jpgImage.src = "images/" + imagesJpg[mapLocation]; // sijainnin päivitys pelaajalle
+  jpgImage.src = "images/" + imagesJpg[mapLocation]; // NPC hahmot
+
+  charInteraction(); // sijainnin päivitys pelaajalle
 
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
 
@@ -389,21 +429,21 @@ function render() {
   })) {
     var localItems = [];
 
-    var _iterator6 = _createForOfIteratorHelper(items),
-        _step6;
+    var _iterator7 = _createForOfIteratorHelper(items),
+        _step7;
 
     try {
-      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-        var element = _step6.value;
+      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+        var element = _step7.value;
 
         if (itemLocations[items.indexOf(element)] === mapLocation) {
           localItems.push(element);
         }
       }
     } catch (err) {
-      _iterator6.e(err);
+      _iterator7.e(err);
     } finally {
-      _iterator6.f();
+      _iterator7.f();
     }
 
     gameMessage = "Näkyvissä on " + localItems.join(", ");

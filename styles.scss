@@ -27,12 +27,12 @@ body {
     width: 500px;
     height: 480px;
     background-image: image-set(
-        url("/images/background2.webp"),
-        url("/images/background2.webp") type("image/webp"),
-        url("/images/background2.jpg"),
-        url("/images/background2.jpg") type("image/jpeg")
+        url("../images/background2.webp"),
+        url("../images/background2.webp") type("image/webp"),
+        url("../images/background2.jpg"),
+        url("../images/background2.jpg") type("image/jpeg")
     ); // very limited support for image-set.. regardless of caniuse pages info
-    background-image: url("/images/background2.webp"); // ..that's why this fallback
+    background-image: url("../images/background2.webp"); // ..that's why this fallback
     background-position-x: center;
     animation: moveBG 18s linear 0s infinite forwards;
 
@@ -99,23 +99,24 @@ body {
             }
 
             .spokenText {
-                width: 20vh;
-                position: relative;
-                background-color: rgba($color: #000000, $alpha: 0.3);
-                border-radius: 30px;
-            }
-
-            .charImage {
-                width: 80vh;
-
-                img {
-                    height: 100vh;
-                    width: auto;
-                    float: right;
+                p {
+                    bottom: 0;
+                    height: 48px;
+                    overflow: scroll;
+                    background-color: rgba($color: #000000, $alpha: 1.0);
+                    border-radius: 30px;
                 }
             }
-        }
-        
+
+            .charScreen {
+                height: 220px;
+
+                img {
+                    height: 80px;
+                    width: auto;
+                }
+            }
+        }   
     }
     
     .interface {

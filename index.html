@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tekstipohjainen seikkailupeli</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
@@ -18,23 +18,24 @@
             <picture id="gameScreen">
                 <source srcset="">
                 <img src="" alt="" style="">
-                </picture>
-                <span onclick="goNorth()" class="fas fa-caret-up fa-6x"></span>
-                <span onclick="goSouth()" class="fas fa-caret-down fa-6x"></span>
-                <span onclick="goEast()" class="fas fa-caret-right fa-6x"></span>
-                <span onclick="goWest()" class="fas fa-caret-left fa-6x"></span>
+            </picture>
+            <span onclick="goNorth()" class="fas fa-caret-up fa-6x"></span>
+            <span onclick="goSouth()" class="fas fa-caret-down fa-6x"></span>
+            <span onclick="goEast()" class="fas fa-caret-right fa-6x"></span>
+            <span onclick="goWest()" class="fas fa-caret-left fa-6x"></span>
 
-                <div class="charDiv">
-                    <span onmouseover="" title="Sulje NPC-ikkuna ja palaa peli-ikkunaan">X</span>
-                    <div id="spokenText">
-                    </div>
-                    <div id="charImage">
-                        <picture id="charScreen">
-                            <source srcset="">
-                            <img src="" alt="" style="">
-                        </picture>
-                    </div>
+            <div class="charDiv">
+                <span onclick="closeCharDiv()" title="Sulje NPC-ikkuna ja palaa peli-ikkunaan">X</span>
+                <div id="charImage">
+                    <picture id="charScreen">
+                        <source srcset="">
+                        <img src="" alt="" style="">
+                    </picture>
                 </div>
+                <div id="spokenText">
+                    <p></p>
+                </div>
+            </div>
 
         </div>
         <div class="interface">
@@ -52,7 +53,7 @@
         </div>
     </div>
 
-    <script src="/js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
