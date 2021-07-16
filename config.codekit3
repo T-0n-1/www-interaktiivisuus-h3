@@ -181,11 +181,11 @@
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/medieval bard.png" : {
+    "\/images\/medieval-bard.png" : {
       "ft" : 32768,
       "iS" : 1763465,
       "oA" : 0,
-      "oAP" : "\/images\/medieval bard.png",
+      "oAP" : "\/images\/medieval-bard.png",
       "oF" : 0,
       "oIPL" : 1,
       "opt" : 1,
@@ -194,22 +194,22 @@
       "q" : 90,
       "rq" : 75
     },
-    "\/images\/medieval bard.webp" : {
+    "\/images\/medieval-bard.webp" : {
       "ft" : 8388608,
       "iS" : 124826,
       "oA" : 0,
-      "oAP" : "\/images\/medieval bard.webp",
+      "oAP" : "\/images\/medieval-bard.webp",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/medieval blacksmith.png" : {
+    "\/images\/medieval-blacksmith.png" : {
       "ft" : 32768,
       "iS" : 241713,
       "oA" : 0,
-      "oAP" : "\/images\/medieval blacksmith.png",
+      "oAP" : "\/images\/medieval-blacksmith.png",
       "oF" : 0,
       "oIPL" : 1,
       "opt" : 1,
@@ -218,46 +218,22 @@
       "q" : 90,
       "rq" : 75
     },
-    "\/images\/medieval blacksmith.webp" : {
+    "\/images\/medieval-blacksmith.webp" : {
       "ft" : 8388608,
       "iS" : 20534,
       "oA" : 0,
-      "oAP" : "\/images\/medieval blacksmith.webp",
+      "oAP" : "\/images\/medieval-blacksmith.webp",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/medieval cleric.jpg" : {
-      "ft" : 16384,
-      "iS" : 128504,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/images\/medieval cleric.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 1,
-      "ou" : "lpckwebp-photo",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/images\/medieval cleric.webp" : {
-      "ft" : 8388608,
-      "iS" : 30766,
-      "oA" : 0,
-      "oAP" : "\/images\/medieval cleric.webp",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-default",
-      "rq" : 75
-    },
-    "\/images\/medieval grimreaper.png" : {
+    "\/images\/medieval-grimreaper.png" : {
       "ft" : 32768,
       "iS" : 119900,
       "oA" : 0,
-      "oAP" : "\/images\/medieval grimreaper.png",
+      "oAP" : "\/images\/medieval-grimreaper.png",
       "oF" : 0,
       "oIPL" : 1,
       "opt" : 1,
@@ -266,22 +242,22 @@
       "q" : 90,
       "rq" : 75
     },
-    "\/images\/medieval grimreaper.webp" : {
+    "\/images\/medieval-grimreaper.webp" : {
       "ft" : 8388608,
       "iS" : 14196,
       "oA" : 0,
-      "oAP" : "\/images\/medieval grimreaper.webp",
+      "oAP" : "\/images\/medieval-grimreaper.webp",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/medieval king.png" : {
+    "\/images\/medieval-messenger.png" : {
       "ft" : 32768,
-      "iS" : 131066,
+      "iS" : 44197,
       "oA" : 0,
-      "oAP" : "\/images\/medieval king.png",
+      "oAP" : "\/images\/medieval-messenger.png",
       "oF" : 0,
       "oIPL" : 1,
       "opt" : 1,
@@ -290,22 +266,22 @@
       "q" : 90,
       "rq" : 75
     },
-    "\/images\/medieval king.webp" : {
+    "\/images\/medieval-messenger.webp" : {
       "ft" : 8388608,
-      "iS" : 64402,
+      "iS" : 19578,
       "oA" : 0,
-      "oAP" : "\/images\/medieval king.webp",
+      "oAP" : "\/images\/medieval-messenger.webp",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
       "ou" : "lpckwebp-default",
       "rq" : 75
     },
-    "\/images\/medieval princess.png" : {
+    "\/images\/medieval-princess.png" : {
       "ft" : 32768,
       "iS" : 445226,
       "oA" : 0,
-      "oAP" : "\/images\/medieval princess.png",
+      "oAP" : "\/images\/medieval-princess.png",
       "oF" : 0,
       "oIPL" : 1,
       "opt" : 1,
@@ -314,59 +290,11 @@
       "q" : 90,
       "rq" : 75
     },
-    "\/images\/medieval princess.webp" : {
+    "\/images\/medieval-princess.webp" : {
       "ft" : 8388608,
       "iS" : 41038,
       "oA" : 0,
-      "oAP" : "\/images\/medieval princess.webp",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-default",
-      "rq" : 75
-    },
-    "\/images\/medieval witch.png" : {
-      "ft" : 32768,
-      "iS" : 526062,
-      "oA" : 0,
-      "oAP" : "\/images\/medieval witch.png",
-      "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
-      "oT" : 1,
-      "ou" : "lpckwebp-photo",
-      "q" : 90,
-      "rq" : 75
-    },
-    "\/images\/medieval witch.webp" : {
-      "ft" : 8388608,
-      "iS" : 36006,
-      "oA" : 0,
-      "oAP" : "\/images\/medieval witch.webp",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-default",
-      "rq" : 75
-    },
-    "\/images\/medieval wizard.png" : {
-      "ft" : 32768,
-      "iS" : 368642,
-      "oA" : 0,
-      "oAP" : "\/images\/medieval wizard.png",
-      "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
-      "oT" : 1,
-      "ou" : "lpckwebp-photo",
-      "q" : 90,
-      "rq" : 75
-    },
-    "\/images\/medieval wizard.webp" : {
-      "ft" : 8388608,
-      "iS" : 38572,
-      "oA" : 0,
-      "oAP" : "\/images\/medieval wizard.webp",
+      "oAP" : "\/images\/medieval-princess.webp",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -391,6 +319,54 @@
       "iS" : 26354,
       "oA" : 0,
       "oAP" : "\/images\/medieval-soldier.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/images\/medieval-witch.png" : {
+      "ft" : 32768,
+      "iS" : 526062,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-witch.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-photo",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/images\/medieval-witch.webp" : {
+      "ft" : 8388608,
+      "iS" : 36006,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-witch.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/images\/medieval-wizard.png" : {
+      "ft" : 32768,
+      "iS" : 368642,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-wizard.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-photo",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/images\/medieval-wizard.webp" : {
+      "ft" : 8388608,
+      "iS" : 38572,
+      "oA" : 0,
+      "oAP" : "\/images\/medieval-wizard.webp",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,

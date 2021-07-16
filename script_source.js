@@ -1,8 +1,8 @@
 let map = []
 map[0] = "Nukkuva lohikäärme"
 map[1] = "Vanha linna"
-map[2] = "Aurinkoinen metsäaukio"
-map[3] = "Syvä kaivo"
+map[2] = "Hämyinen metsäaukio"
+map[3] = "Linnan piha"
 map[4] = "Kapea metsäpolku"
 map[5] = "Vanha portti"
 map[6] = "Joen ranta"
@@ -32,35 +32,31 @@ imagesJpg[7] = "penkki.jpg"
 imagesJpg[8] = "mokki.jpg"
 
 let charWebp = []
-charWebp[0] = "medieval grimreaper.webp"
-charWebp[1] = "medieval princess.webp"
-charWebp[2] = "medieval king.webp"
-charWebp[3] = "medieval blacksmith.webp"
-charWebp[4] = "medieval witch.webp"
-charWebp[5] = "medieval wizard.webp"
-charWebp[6] = "medieval cleric.webp"
-charWebp[7] = "medieval soldier.webp"
-charWebp[8] = "medieval bard.webp"
+charWebp[0] = "medieval-grimreaper.webp"
+charWebp[1] = "medieval-princess.webp"
+charWebp[2] = "medieval-blacksmith.webp"
+charWebp[3] = "medieval-witch.webp"
+charWebp[4] = "medieval-wizard.webp"
+charWebp[5] = "medieval-soldier.webp"
+charWebp[6] = "medieval-bard.webp"
 
 let charPng = []
 charPng[0] = "medieval grimreaper.png"
 charPng[1] = "medieval princess.png"
-charPng[2] = "medieval king.png"
-charPng[3] = "medieval blacksmith.png"
-charPng[4] = "medieval witch.png"
-charPng[5] = "medieval wizard.png"
-charPng[6] = "medieval cleric.jpg"
-charPng[7] = "medieval soldier.png"
-charPng[8] = "medieval bard.png"
+charPng[2] = "medieval blacksmith.png"
+charPng[3] = "medieval witch.png"
+charPng[4] = "medieval wizard.png"
+charPng[5] = "medieval soldier.png"
+charPng[6] = "medieval bard.png"
+
+let webpImage = document.querySelector("#gameScreen source")
+let jpgImage = document.querySelector("#gameScreen img")
+let webpCharImage = document.querySelector("#charScreen source")
+let pngCharImage = document.querySelector("#charScreen img")
 
 // Hahmojen puheet
 let princessTalk = []
 princessTalk[0] = "Kiitokseni sinulle - pelastit minut painajaisesta, jonka pelkäsin kestävän ikuisuuden. Velho muutti minut vihaiseksi lohikäärmeeksi kostoksi isäni erotettua hänet kuninkaan velhon virasta"
-
-let kingTalk = []
-kingTalk[0] = "Vaeltaja, saavut surun hetkellä. Valtakuntaamme on kohdannut monta suurta surua - ensin vaimoni kuoli outoon sairauteen ja sitten tyttäreni katosi. Olen erottanut kuninkaallisen velhon vaimoni kuoltua hänen ponnisteluistaan huolimatta. Pian sen jälkeen ilmestyi lohikäärme, joka on terrorisoinut koko valtakuntaa. Lohikäärmeen yksi ensimmäisistä uhreista oli luultavasti tyttäreni. Käsken sinua nyt hoitamaan asian - tappamaan lohikäärmeen ja tuomaan valtakunnalleni rauhan. Vaimoani ja tytärtäni se ei takaisin tuo, mutta näin saisin kansamme vielä jäämään - se on alkanut pienemmissä ja isommissa ryhmissä muuttamaan toisaalle."
-kingTalk[1] = "Tiesin, että sinuun voi luottaa. Olet saanut lohikäärmeen tapettua ja nyt minäkin voin alkaa rauhassa surra."
-kingTalk[2] = "Kuka olisi uskonut.. miten minä olenkaan ollut sokea. Kuinka voisin koskaan kiittää, sinä olit välittämättä käskystäni tappaa lohikäärme ja selvitit asiat paremmin kuin osasin koskaan edes unelmoida. Erottamani entinen kuninkaan velho oli taikonut tyttäreni lohikäärmeeksi ja varmasti ajatellut saavansa todella synkän koston minun tapattaessa lohikäärmeen, joka oikeasti olikin oma tyttäreni. Olen ikionnellinen, sinä olet antanut minulle tyttäreni takaisin."
 
 let smithTalk = []
 smithTalk[0] = "Kuningas pitää minut kiireisenä. Mikäli sinulle ei rahaa ole niin älä häiritse minua."
@@ -75,15 +71,15 @@ witchTalk[2] = "Täällä valtakunnassa ei kaikki ole sitä miltä näyttää.."
 let wizardTalk = []
 wizardTalk[0] = "Kuinka minä vihaankaan kuningasta, hän erotti minut kuninkaan velhon virasta epäonnistuttuani parantamaan hänen vaimonsa. Minä saan lopulta sanoa viimeisen sanan.. ja nauran.. makeasti.. kosto on oleva suloinen."
 
-let clericTalk = []
-clericTalk[0] = "Parahin vaeltaja, valtakuntamme kuningas on seurannut huhuja teistä ja suorittamistanne urotöistä. Hän käski viipymättä saapumaan audienssille linnaansa. Seuraa vain polkua pohjoiseen ja löydätte linnaan."
-
 let soldierTalk = []
 soldierTalk[0] = "Kuninkaamme käskystä estämme poistumisenne kunnes asianne täällä hänen kanssaan on hoidettu."
 
 let bardTalk = []
 bardTalk[0] = "Ollos tervetullut vaeltaja. jää kuuntelemaan surusointuisia säveliäni. Menetin elämäni rakkauden lohikäärmelle ja kaiken lisäksi kadotin rakkaimman muistoni hänestä - korun, jonka sisällä oli kaiverrus rakkaastani"
 bardTalk[1] = "Sinä löysit sen - minun rakkaimman koruni. Minun rakkaimman, kadonneen koruni. Minulla ei koskaan ole ollut maallisia rikkauksia enkä voi korvata sinulle muuten kuin jakamalla kanssasi jumalallisen musiikin. Soita suruusi, soita iloosi - ongelmat kaikkoavat kuin itsestään, et tarvitse miekkaa et taikaa."
+
+let messengerTalk = []
+messengerTalk[0] = "Olen valtakuntamme kuninkaan viestinviejä. Hän on käskenyt tuomaan teille käskynsä tappaa valtakuntaa terrorisoiva lohikäärme. Lohikäärmeen ensimmäisiin uhreihin kuuluu kadonnut kuninkaan tytär."
 
 // Viesti joka näyteteään pelaajan valitseman suunnan ollessa estetty
 let blockMessage = []
@@ -183,10 +179,6 @@ function mouseInterfaceHandler(array) {
 }
 
 
-let webpImage = document.querySelector("#gameScreen source")
-let jpgImage = document.querySelector("#gameScreen img")
-let webpCharImage = document.querySelector("#charScreen source")
-let pngCharImage = document.querySelector("#charScreen img")
 
 render()
 
