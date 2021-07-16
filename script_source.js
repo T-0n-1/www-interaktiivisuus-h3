@@ -91,8 +91,8 @@ let playersInput = ""
 let gameMessage = ""
 
 // Pelin sisältämät tavarat
-let items = ["huilu", "kivi", "miekka"]
-let itemLocations = [1, 6, 8]
+let items = ["kivi", "koru", "kolikko", "yrtit", "miekka", "huilu"]
+let itemLocations = [1, 7, undefined, 6, undefined, undefined]
 
 let list = ``
 

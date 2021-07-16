@@ -87,8 +87,8 @@ var playersInput = ""; // Pelin viesti
 
 var gameMessage = ""; // Pelin sisältämät tavarat
 
-var items = ["huilu", "kivi", "miekka"];
-var itemLocations = [1, 6, 8];
+var items = ["kivi", "koru", "kolikko", "yrtit", "miekka", "huilu"];
+var itemLocations = [1, 7, undefined, 6, undefined, undefined];
 var list = ""; // Pelaajan inventaario
 
 var backPack = []; // Pelaajan köytössä olevat toiminnot
