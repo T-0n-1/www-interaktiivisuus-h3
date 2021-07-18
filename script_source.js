@@ -53,7 +53,7 @@ charPng[6] = "medieval-bard.png"
 charPng[7] = "medieval-messenger.png"
 charPng[8] = "medieval-king.png"
 
-let charLocations = [undefined, undefined, 3, 2, 6, 5, 8, 4, 1]
+let charLocations = [undefined, undefined, 3, 2, 6, undefined, 8, 4, 1]
 
 let webpImage = document.querySelector("#gameScreen source")
 let jpgImage = document.querySelector("#gameScreen img")
@@ -82,15 +82,15 @@ function closeCharDiv() {
 
 // Hahmojen puheet
 let talk = []
-talk[0] = "* Kuolema ei pidä minkäänlaista ääntä tullessaan hakemaan sinua *"
-talk[1] = "Kiitokseni sinulle - pelastit minut painajaisesta, jonka pelkäsin kestävän ikuisuuden. Velho muutti minut vihaiseksi lohikäärmeeksi kostoksi isäni erotettua hänet kuninkaan velhon virasta."
-talk[2] = "Kuningas pitää minut kiireisenä. Mikäli sinulle ei rahaa ole niin älä häiritse minua."
-talk[3] = "Hei vaeltaja.. poistuthan pikaisesti minua häiritsemättä.. etsin yrttejä, mutten ole löytänyt vielä yhtä ainoaa.."
-talk[4] = "Kuinka minä vihaankaan kuningasta, hän erotti minut kuninkaan velhon virasta epäonnistuttuani parantamaan hänen vaimonsa. Minä saan lopulta sanoa viimeisen sanan.."
-talk[5] = "Kuninkaamme käskystä estämme poistumisenne kunnes asianne täällä hänen kanssaan on hoidettu."
-talk[6] = "Ollos tervetullut vaeltaja. jää kuuntelemaan surusointuisia säveliäni. Menetin elämäni rakkauden lohikäärmelle ja kaiken lisäksi kadotin rakkaimman muistoni hänestä - korun, jonka sisällä oli kaiverrus rakkaastani"
-talk[7] = "Olen valtakuntamme kuninkaan viestinviejä. Hän on antanut käskyn tulla käskemään teidät puheillensa välittömästi. Asia koskee varmasti valtakuntaamme terrorisoivaa petoa."
-talk[8] = "Hei vaeltaja, valtakuntaamme riivaa peto, jonka yhtenä ensimmäisistä uhreista oli tyttäreni. Käskyni on tuhota tuo peto ja vapauttaa valtakuntamme sen surua ja kuolemaa aiheuttavasta ikeestä."
+talk[0] = "* Kuolema ei pidä minkäänlaista ääntä tullessaan hakemaan sinua *** Peli päättyi *"
+talk[1] = "PRINSESSA:   Kiitokseni sinulle - pelastit minut painajaisesta, jonka pelkäsin kestävän ikuisuuden. Velho muutti minut vihaiseksi lohikäärmeeksi kostoksi isäni erotettua hänet kuninkaan velhon virasta."
+talk[2] = "SEPPÄ:   Kuningas pitää minut kiireisenä. Mikäli sinulle ei rahaa ole niin älä häiritse minua."
+talk[3] = "NOITA:   Poistu minua häiritsemästä.. etsin yrttejä, mutten ole löytänyt vielä yhtä ainoaa.."
+talk[4] = "VELHO:   Kuningas on vanha hölmö, hän erotti minut kuninkaan velhon virasta epäonnistuttuani parantamaan hänen vaimonsa."
+talk[5] = "SOTILAS:   Kuninkaamme käskystä estämme poistumisenne kunnes asianne täällä hänen kanssaan on hoidettu."
+talk[6] = "BARDI:   Ollos tervetullut vaeltaja. jää kuuntelemaan surusointuisia säveliäni. Menetin elämäni rakkauden lohikäärmelle ja kaiken lisäksi kadotin rakkaimman muistoni hänestä - korun, jonka sisällä oli kaiverrus rakkaastani"
+talk[7] = "VIESTINTUOJA:   Kuningas on antanut käskyn tulla noutamaan teidät puheillensa välittömästi. Jatka siis välittömästi pohjoiseen."
+talk[8] = "KUNINGAS:   Valtakuntaamme riivaa peto, jonka yhtenä ensimmäisistä uhreista oli tyttäreni. Käskyni on tappaa tuo peto ja vapauttaa valtakuntamme sen surua ja kuolemaa aiheuttavasta ikeestä."
 
 // Viesti joka näyteteään pelaajan valitseman suunnan ollessa estetty
 let blockMessage = []
@@ -99,13 +99,14 @@ blockMessage[1] = "Linnaa ympäröivä vallihauta estää liikkumisen siihen suu
 blockMessage[2] = "Et halua häiritä noitaa toimissaan"
 blockMessage[3] = "Rakennukset estävät kulkusi siihen suuntaan"
 blockMessage[4] = " "
-blockMessage[5] = "Olet astumassa portista, mutta yhtäkkiä kuninkaan sotilas astuu eteesi"
+blockMessage[5] = " "
 blockMessage[6] = "Voimakas virtaus estää joen ylityken"
 blockMessage[7] = "Metsä on liian tiheä kuljettavaksi"
 blockMessage[8] = "Bardi pysäyttää sinut pyytäen kääntymään takaisin ja hoitamaan asiat kuntoon"
 
 // Sijainti pelin alussa
 let mapLocation = 4
+let lastLocation = undefined
 
 // Pelaajan syöte
 let playersInput = ""
@@ -155,6 +156,12 @@ function goSouth() {
 function goEast() {
     if (mapLocation % 3 != 2) {
         mapLocation += 1
+    } else if (mapLocation === 5) {
+        document.querySelector(".charDiv").style.display = "block"
+        document.querySelector(".interface").style.display = "none"
+        webpCharImage.srcset = "../images/" + charWebp[5]
+        pngCharImage.src = "../images/" + charPng[5]
+        speak.innerHTML = talk[5]
     } else {
         return warning.innerHTML = blockMessage[mapLocation]
     }
@@ -302,6 +309,12 @@ function playGame() {
         case "itä":
             if (mapLocation % 3 != 2) {
                 mapLocation += 1
+            } else if (mapLocation === 5) {
+                document.querySelector(".charDiv").style.display = "block"
+                document.querySelector(".interface").style.display = "none"
+                webpCharImage.srcset = "../images/" + charWebp[5]
+                pngCharImage.src = "../images/" + charPng[5]
+                speak.innerHTML = talk[5]
             } else {
                 warning.innerHTML = blockMessage[mapLocation]
             }
@@ -343,7 +356,6 @@ function playGame() {
     document.querySelector("#mouseDrop").innerHTML = "[ Pudota ]"
     let droppable = itemsInBackpack('pudota')
     document.querySelector("#mouseDrop").innerHTML += droppable
-    
     
     render()
 }
