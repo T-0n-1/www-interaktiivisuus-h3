@@ -64,7 +64,7 @@ let speak = document.querySelector("#spokenText p")
 function charInteraction() {
     if (charLocations.some(value => value === mapLocation)) {
         document.querySelector(".charDiv").style.display = "block"
-        document.querySelector(".container-inner span").style.display = "none"
+        document.querySelector(".interface").style.display = "none"
         for (let element of charLocations) {
             if (element === mapLocation) {
                 webpCharImage.srcset = "../images/" + charWebp[charLocations.indexOf(element)]
@@ -77,7 +77,7 @@ function charInteraction() {
 
 function closeCharDiv() {
     document.querySelector(".charDiv").style.display = "none"
-    document.querySelector(".fas").style.display = "initial"
+    document.querySelector(".interface").style.display = "flex"
 }
 
 // Hahmojen puheet

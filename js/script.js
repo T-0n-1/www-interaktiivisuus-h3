@@ -68,7 +68,7 @@ function charInteraction() {
     return value === mapLocation;
   })) {
     document.querySelector(".charDiv").style.display = "block";
-    document.querySelector(".container-inner span").style.display = "none";
+    document.querySelector(".interface").style.display = "none";
 
     var _iterator = _createForOfIteratorHelper(charLocations),
         _step;
@@ -93,7 +93,7 @@ function charInteraction() {
 
 function closeCharDiv() {
   document.querySelector(".charDiv").style.display = "none";
-  document.querySelector(".fas").style.display = "initial";
+  document.querySelector(".interface").style.display = "flex";
 } // Hahmojen puheet
 
 
