@@ -106,7 +106,7 @@ blockMessage[8] = "Bardi pysäyttää sinut pyytäen kääntymään takaisin ja 
 
 // Sijainti pelin alussa
 let mapLocation = 4
-let lastLocation = undefined
+let playerMoved = true
 
 // Pelaajan syöte
 let playersInput = ""
@@ -137,6 +137,7 @@ output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[
 
 function goNorth() {
     if (mapLocation >= 3) {
+        playerMoved = true
         mapLocation -= 3
     } else {
         return warning.innerHTML = blockMessage[mapLocation]
@@ -146,6 +147,7 @@ function goNorth() {
 
 function goSouth() {
     if (mapLocation <= 5) {
+        playerMoved = true
         mapLocation += 3
     } else {
         return warning.innerHTML = blockMessage[mapLocation]
@@ -155,6 +157,7 @@ function goSouth() {
 
 function goEast() {
     if (mapLocation % 3 != 2) {
+        playerMoved = true
         mapLocation += 1
     } else if (mapLocation === 5) {
         document.querySelector(".charDiv").style.display = "block"
@@ -171,6 +174,7 @@ function goEast() {
 
 function goWest() {
     if (mapLocation % 3 != 0) {
+        playerMoved = true
         mapLocation -= 1
     } else {
         return warning.innerHTML = blockMessage[mapLocation]
@@ -292,6 +296,7 @@ function playGame() {
 
         case 'pohjoinen':
             if (mapLocation >= 3) {
+                playerMoved = true
                 mapLocation -= 3
             } else {
                 warning.innerHTML = blockMessage[mapLocation]
@@ -300,6 +305,7 @@ function playGame() {
 
         case 'etelä':
             if (mapLocation <= 5) {
+                playerMoved = true
                 mapLocation += 3
             } else {
                 warning.innerHTML = blockMessage[mapLocation]
@@ -308,6 +314,7 @@ function playGame() {
 
         case "itä":
             if (mapLocation % 3 != 2) {
+                playerMoved = true
                 mapLocation += 1
             } else if (mapLocation === 5) {
                 document.querySelector(".charDiv").style.display = "block"
@@ -322,6 +329,7 @@ function playGame() {
 
         case "länsi":
             if (mapLocation % 3 != 0) {
+                playerMoved = true
                 mapLocation -= 1
             } else {
                 warning.innerHTML = blockMessage[mapLocation]
@@ -370,7 +378,9 @@ function render() {
     jpgImage.src = "images/" + imagesJpg[mapLocation]
     
     // NPC hahmot
+    if (playerMoved == true) {
     charInteraction()
+    }
 
     // sijainnin päivitys pelaajalle
     output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]
@@ -399,4 +409,6 @@ function render() {
     } else if (gameMessage.startsWith("Näkyvissä")) {
         inGameMessage.innerHTML = "<i>" + gameMessage + "</i>"
     }
+
+    playerMoved = false
 }

@@ -120,7 +120,7 @@ blockMessage[7] = "Metsä on liian tiheä kuljettavaksi";
 blockMessage[8] = "Bardi pysäyttää sinut pyytäen kääntymään takaisin ja hoitamaan asiat kuntoon"; // Sijainti pelin alussa
 
 var mapLocation = 4;
-var lastLocation = undefined; // Pelaajan syöte
+var playerMoved = true; // Pelaajan syöte
 
 var playersInput = ""; // Pelin viesti
 
@@ -143,6 +143,7 @@ output.innerHTML = "<span class='outputHeader'>Sijaintisi on:<br></span>" + map[
 
 function goNorth() {
   if (mapLocation >= 3) {
+    playerMoved = true;
     mapLocation -= 3;
   } else {
     return warning.innerHTML = blockMessage[mapLocation];
@@ -153,6 +154,7 @@ function goNorth() {
 
 function goSouth() {
   if (mapLocation <= 5) {
+    playerMoved = true;
     mapLocation += 3;
   } else {
     return warning.innerHTML = blockMessage[mapLocation];
@@ -163,6 +165,7 @@ function goSouth() {
 
 function goEast() {
   if (mapLocation % 3 != 2) {
+    playerMoved = true;
     mapLocation += 1;
   } else if (mapLocation === 5) {
     document.querySelector(".charDiv").style.display = "block";
@@ -179,6 +182,7 @@ function goEast() {
 
 function goWest() {
   if (mapLocation % 3 != 0) {
+    playerMoved = true;
     mapLocation -= 1;
   } else {
     return warning.innerHTML = blockMessage[mapLocation];
@@ -357,6 +361,7 @@ function playGame() {
   switch (action) {
     case 'pohjoinen':
       if (mapLocation >= 3) {
+        playerMoved = true;
         mapLocation -= 3;
       } else {
         warning.innerHTML = blockMessage[mapLocation];
@@ -366,6 +371,7 @@ function playGame() {
 
     case 'etelä':
       if (mapLocation <= 5) {
+        playerMoved = true;
         mapLocation += 3;
       } else {
         warning.innerHTML = blockMessage[mapLocation];
@@ -375,6 +381,7 @@ function playGame() {
 
     case "itä":
       if (mapLocation % 3 != 2) {
+        playerMoved = true;
         mapLocation += 1;
       } else if (mapLocation === 5) {
         document.querySelector(".charDiv").style.display = "block";
@@ -390,6 +397,7 @@ function playGame() {
 
     case "länsi":
       if (mapLocation % 3 != 0) {
+        playerMoved = true;
         mapLocation -= 1;
       } else {
         warning.innerHTML = blockMessage[mapLocation];
@@ -433,7 +441,10 @@ function render() {
   webpImage.srcset = "images/" + imagesWebp[mapLocation];
   jpgImage.src = "images/" + imagesJpg[mapLocation]; // NPC hahmot
 
-  charInteraction(); // sijainnin päivitys pelaajalle
+  if (playerMoved == true) {
+    charInteraction();
+  } // sijainnin päivitys pelaajalle
+
 
   output.innerHTML = "<span class='outputHeader'>Sijaintisi on:</span><br>" + map[mapLocation]; // mahdolliset esineet peliruudulla
 
@@ -475,6 +486,8 @@ function render() {
   } else if (gameMessage.startsWith("Näkyvissä")) {
     inGameMessage.innerHTML = "<i>" + gameMessage + "</i>";
   }
+
+  playerMoved = false;
 }
 
 //# sourceMappingURL=script.js.map
