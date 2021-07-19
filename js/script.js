@@ -222,7 +222,9 @@ function playGame() {
   warning.innerHTML = "";
   var playersInputArray = playersInput.split(' ');
   action = checkAction();
-  action = action.toString();
+  action = action.toString(); // warningin oletusvärin palautus
+
+  warning.style.color = "red";
 
   function checkAction() {
     var output = [];
@@ -313,8 +315,8 @@ function playGame() {
 
         if (backPack.includes(element)) {
           // let items = ["kivi", "koru", "kolikko", "yrtit", "miekka", "huilu"]
-          if (element == items[0]) {
-            if (mapLocation = 0) {
+          if (element == "kivi") {
+            if (mapLocation == 0) {
               document.querySelector(".charDiv").style.display = "block";
               document.querySelector(".charDiv span").style.display = "none";
               document.querySelector(".interface").style.display = "none";
@@ -329,10 +331,11 @@ function playGame() {
               pngCharImage.src = "../images/" + charPng[0];
               speak.innerHTML = "Heität noitaa kohti kivellä.. Noita lausuu sanoja, joita et ymmärrä, ja näet kiven muuttavan suuntaan takaisin. Kivi iskeytyy järkyttävällä voimalla otsaasi - tunnet kuinka kaadut maailman pimetessä ympärilläsi. " + talk[0];
             } else {
-              inGameMessage.innerHTML = "Heität kiven kaikin voimin eteen päin. Kivi lentää pitkälle etkä löydä sitä enää";
+              warning.style.color = "lightgreen";
+              warning.innerHTML = "Heität kiven kaikin voimin eteen päin. Kivi lentää pitkälle etkä löydä sitä enää";
               backPack.splice(backPack.indexOf(element), 1);
             }
-          } else if (element = items[1]) {
+          } else if (element = "koru") {
             if (mapLocation == 3) {
               document.querySelector(".charDiv").style.display = "block";
               document.querySelector(".interface").style.display = "none";
@@ -356,6 +359,47 @@ function playGame() {
               var y = items.indexOf("huilu");
               backPack.splice(i, 1);
               itemLocations[y] = 8;
+            } else {
+              warning.style.color = "lightgreen";
+              warning.innerHTML = "Tutkiessasi korua huomaat, että se on yksinkertainen ja kaunis koru - sisällä on kaiverrus naisesta";
+            }
+          } else if (element = "kolikko") {
+            if (mapLocation == 3) {
+              document.querySelector(".charDiv").style.display = "block";
+              document.querySelector(".interface").style.display = "none";
+              webpCharImage.srcset = "../images/" + charWebp[2];
+              pngCharImage.src = "../images/" + charPng[2];
+              speak.innerHTML = "Rahasi kelpaa. Taoin aikaisemmin miekan, joka sopisi juuri sinulle.";
+              talk[6] = "SEPPÄ:   Olen kiireinen, älä häiritse minua enää.";
+
+              var _i = backPack.indexOf("kolikko");
+
+              var _y = items.indexOf("miekka");
+
+              backPack.splice(_i, 1);
+              itemLocations[_y] = 3;
+            } else {
+              warning.style.color = "lightgreen";
+              warning.innerHTML = "Tutkit kolikko - se on kultakolikko, arvokas ja kulunut. Sille varmasti on käyttöä, pidä hyvää huolta siitä.";
+            }
+          } else if (element = "yrtit") {
+            if (mapLocation == 2) {
+              document.querySelector(".charDiv").style.display = "block";
+              document.querySelector(".interface").style.display = "none";
+              webpCharImage.srcset = "../images/" + charWebp[3];
+              pngCharImage.src = "../images/" + charPng[3];
+              speak.innerHTML = "Toit minulle yrttejä - olet yllättävä tapaus. Sinulla varmasti on joku taka-ajatus tässä. Tässä kolikko palveluksestasi, jätä minut nyt rauhaan.";
+              talk[3] = "NOITA:   Olen kiireinen, jätä minut rauhaan.";
+
+              var _i2 = backPack.indexOf("yrtit");
+
+              var _y2 = items.indexOf("kolikko");
+
+              backPack.splice(_i2, 1);
+              itemLocations[_y2] = 2;
+            } else {
+              warning.style.color = "lightgreen";
+              warning.innerHTML = "Tutkit yrttejä - ne tuoksuvat voimakkaasti. Sinulla ei ole niille käyttöä.";
             }
           }
 
