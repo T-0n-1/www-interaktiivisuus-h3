@@ -82,7 +82,7 @@ function closeCharDiv() {
 
 // Hahmojen puheet
 let talk = []
-talk[0] = "* Kuolema ei pidä minkäänlaista ääntä tullessaan hakemaan sinua *** Peli päättyi *"
+talk[0] = " ***Kuolema ei pidä minkäänlaista ääntä tullessaan hakemaan sinua*** ***Peli päättyi***"
 talk[1] = "PRINSESSA:   Kiitokseni sinulle - pelastit minut painajaisesta, jonka pelkäsin kestävän ikuisuuden. Velho muutti minut vihaiseksi lohikäärmeeksi kostoksi isäni erotettua hänet kuninkaan velhon virasta."
 talk[2] = "SEPPÄ:   Kuningas pitää minut kiireisenä. Mikäli sinulle ei rahaa ole niin älä häiritse minua."
 talk[3] = "NOITA:   Poistu minua häiritsemästä.. etsin yrttejä, mutten ole löytänyt vielä yhtä ainoaa.."
@@ -263,7 +263,61 @@ function playGame() {
     }
     
     function useItem() {
-        
+        for (let element of playersInputArray)
+            if (backPack.includes(element)) {
+                // let items = ["kivi", "koru", "kolikko", "yrtit", "miekka", "huilu"]
+                if (element == items[0]) {
+                    if (mapLocation = 0) {
+                        document.querySelector(".charDiv").style.display = "block"
+                        document.querySelector(".charDiv span").style.display = "none"
+                        document.querySelector(".interface").style.display = "none"
+                        webpCharImage.srcset = "../images/" + charWebp[0]
+                        pngCharImage.src = "../images/" + charPng[0]
+                        speak.innerHTML = "Heität nukkuvaa lohikäärmettä kivellä.. lohikäärme herää vihaisena kääntäen päänsä heti suuntaasi hönkäisten tulikuuman liekin päällesi. " + talk[0]
+                    } else if (mapLocation == 2) {
+                        document.querySelector(".charDiv").style.display = "block"
+                        document.querySelector(".charDiv span").style.display = "none"
+                        document.querySelector(".interface").style.display = "none"
+                        webpCharImage.srcset = "../images/" + charWebp[0]
+                        pngCharImage.src = "../images/" + charPng[0]
+                        speak.innerHTML = "Heität noitaa kohti kivellä.. Noita lausuu sanoja, joita et ymmärrä, ja näet kiven muuttavan suuntaan takaisin. Kivi iskeytyy järkyttävällä voimalla otsaasi - tunnet kuinka kaadut maailman pimetessä ympärilläsi. " + talk[0]
+                    } else {
+                        inGameMessage.innerHTML = "Heität kiven kaikin voimin eteen päin. Kivi lentää pitkälle etkä löydä sitä enää"
+                        backPack.splice(backPack.indexOf(element), 1)
+                    }
+                } else if (element = items[1]) {
+                    if (mapLocation == 3) {
+                        document.querySelector(".charDiv").style.display = "block"
+                        document.querySelector(".interface").style.display = "none"
+                        webpCharImage.srcset = "../images/" + charWebp[2]
+                        pngCharImage.src = "../images/" + charPng[2]
+                        speak.innerHTML = "En tee helyilläsi mitään - vie ne muualle."
+                    } else if (mapLocation == 2) {
+                        document.querySelector(".charDiv").style.display = "block"
+                        document.querySelector(".interface").style.display = "none"
+                        webpCharImage.srcset = "../images/" + charWebp[3]
+                        pngCharImage.src = "../images/" + charPng[3]
+                        speak.innerHTML = "Tarjoat minulle korua, johon kaiverrettu toinen nainen? Mene vielä kun sallin sinun lähtevän."
+                    } else if (mapLocation == 8) {
+                        document.querySelector(".charDiv").style.display = "block"
+                        document.querySelector(".interface").style.display = "none"
+                        webpCharImage.srcset = "../images/" + charWebp[6]
+                        pngCharImage.src = "../images/" + charPng[6]
+                        speak.innerHTML = "Sinäkö löysit koruni? En voi uskoa tätä todeksi. Minulla ei ole rikkauksia sinulle antaa, mutta ota tämä huilu. Se voi olla mittaamattoman arvokas."
+                        talk[6] = "BARDI:   Hei ystävä, olet aina tervetullut jakamaan musiikin ilon kanssani. Musiikilla voi selvittää maailmassa tilanteita ja mysteereitä miekkaa ja kilpeä paremmin."
+                        let i = backPack.indexOf("koru")
+                        let y = items.indexOf("huilu")
+                        backPack.splice(i, 1)
+                        itemLocations[y] = 8
+                    }
+                }
+
+
+                
+                break
+            } else {
+                warning.innerHTML = "Ei sellaista tavaraa mukana"
+            }
     }
     
     function itemsInBackpack(command) {
