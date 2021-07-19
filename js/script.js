@@ -78,8 +78,8 @@ function charInteraction() {
         var element = _step.value;
 
         if (element === mapLocation) {
-          webpCharImage.srcset = "../images/" + charWebp[charLocations.indexOf(element)];
-          pngCharImage.src = "../images/" + charPng[charLocations.indexOf(element)];
+          webpCharImage.srcset = "images/" + charWebp[charLocations.indexOf(element)];
+          pngCharImage.src = "images/" + charPng[charLocations.indexOf(element)];
           speak.innerHTML = talk[charLocations.indexOf(element)];
         }
       }
@@ -170,8 +170,8 @@ function goEast() {
   } else if (mapLocation === 5) {
     document.querySelector(".charDiv").style.display = "block";
     document.querySelector(".interface").style.display = "none";
-    webpCharImage.srcset = "../images/" + charWebp[5];
-    pngCharImage.src = "../images/" + charPng[5];
+    webpCharImage.srcset = "images/" + charWebp[5];
+    pngCharImage.src = "images/" + charPng[5];
     speak.innerHTML = talk[5];
   } else {
     return warning.innerHTML = blockMessage[mapLocation];
@@ -320,57 +320,45 @@ function playGame() {
               document.querySelector(".charDiv").style.display = "block";
               document.querySelector(".charDiv span").style.display = "none";
               document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[0];
-              pngCharImage.src = "../images/" + charPng[0];
+              webpCharImage.srcset = "images/" + charWebp[0];
+              pngCharImage.src = "images/" + charPng[0];
               speak.innerHTML = "Heität nukkuvaa lohikäärmettä kivellä.. lohikäärme herää vihaisena kääntäen päänsä heti suuntaasi hönkäisten tulikuuman liekin päällesi. " + talk[0];
             } else if (mapLocation == 2) {
               document.querySelector(".charDiv").style.display = "block";
               document.querySelector(".charDiv span").style.display = "none";
               document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[0];
-              pngCharImage.src = "../images/" + charPng[0];
+              webpCharImage.srcset = "images/" + charWebp[0];
+              pngCharImage.src = "images/" + charPng[0];
               speak.innerHTML = "Heität noitaa kohti kivellä.. Noita lausuu sanoja, joita et ymmärrä, ja näet kiven muuttavan suuntaan takaisin. Kivi iskeytyy järkyttävällä voimalla otsaasi - tunnet kuinka kaadut maailman pimetessä ympärilläsi. " + talk[0];
             } else {
               warning.style.color = "lightgreen";
               warning.innerHTML = "Heität kiven kaikin voimin eteen päin. Kivi lentää pitkälle etkä löydä sitä enää";
               backPack.splice(backPack.indexOf(element), 1);
             }
-          } else if (element = "koru") {
-            if (mapLocation == 3) {
+          } else if (element == "yrtit") {
+            if (mapLocation == 2) {
               document.querySelector(".charDiv").style.display = "block";
               document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[2];
-              pngCharImage.src = "../images/" + charPng[2];
-              speak.innerHTML = "En tee helyilläsi mitään - vie ne muualle.";
-            } else if (mapLocation == 2) {
-              document.querySelector(".charDiv").style.display = "block";
-              document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[3];
-              pngCharImage.src = "../images/" + charPng[3];
-              speak.innerHTML = "Tarjoat minulle korua, johon kaiverrettu toinen nainen? Mene vielä kun sallin sinun lähtevän.";
-            } else if (mapLocation == 8) {
-              document.querySelector(".charDiv").style.display = "block";
-              document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[6];
-              pngCharImage.src = "../images/" + charPng[6];
-              speak.innerHTML = "Sinäkö löysit koruni? En voi uskoa tätä todeksi. Minulla ei ole rikkauksia sinulle antaa, mutta ota tämä huilu. Se voi olla mittaamattoman arvokas.";
-              talk[6] = "BARDI:   Hei ystävä, olet aina tervetullut jakamaan musiikin ilon kanssani. Musiikilla voi selvittää maailmassa tilanteita ja mysteereitä miekkaa ja kilpeä paremmin.";
-              var i = backPack.indexOf("koru");
-              var y = items.indexOf("huilu");
+              webpCharImage.srcset = "images/" + charWebp[3];
+              pngCharImage.src = "images/" + charPng[3];
+              speak.innerHTML = "NOITA:   Toit minulle yrttejä - olet yllättävä tapaus. Sinulla varmasti on joku taka-ajatus tässä. Tässä kolikko palveluksestasi, jätä minut nyt rauhaan.";
+              talk[3] = "NOITA:   Olen kiireinen, jätä minut rauhaan.";
+              var i = backPack.indexOf("yrtit");
+              var y = items.indexOf("kolikko");
               backPack.splice(i, 1);
-              itemLocations[y] = 8;
+              itemLocations[y] = 2;
             } else {
               warning.style.color = "lightgreen";
-              warning.innerHTML = "Tutkiessasi korua huomaat, että se on yksinkertainen ja kaunis koru - sisällä on kaiverrus naisesta";
+              warning.innerHTML = "Tutkit yrttejä - ne tuoksuvat voimakkaasti. Sinulla ei ole niille käyttöä.";
             }
-          } else if (element = "kolikko") {
+          } else if (element == "kolikko") {
             if (mapLocation == 3) {
               document.querySelector(".charDiv").style.display = "block";
               document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[2];
-              pngCharImage.src = "../images/" + charPng[2];
-              speak.innerHTML = "Rahasi kelpaa. Taoin aikaisemmin miekan, joka sopisi juuri sinulle.";
-              talk[6] = "SEPPÄ:   Olen kiireinen, älä häiritse minua enää.";
+              webpCharImage.srcset = "images/" + charWebp[2];
+              pngCharImage.src = "images/" + charPng[2];
+              speak.innerHTML = "SEPPÄ:   Rahasi kelpaa. Taoin aikaisemmin miekan, joka sopisi juuri sinulle.";
+              talk[2] = "SEPPÄ:   Olen kiireinen, älä häiritse minua enää.";
 
               var _i = backPack.indexOf("kolikko");
 
@@ -382,30 +370,50 @@ function playGame() {
               warning.style.color = "lightgreen";
               warning.innerHTML = "Tutkit kolikko - se on kultakolikko, arvokas ja kulunut. Sille varmasti on käyttöä, pidä hyvää huolta siitä.";
             }
-          } else if (element = "yrtit") {
-            if (mapLocation == 2) {
+          } else if (element == "miekka") {
+            if (mapLocation == 0) {
               document.querySelector(".charDiv").style.display = "block";
+              document.querySelector(".charDiv span").style.display = "none";
               document.querySelector(".interface").style.display = "none";
-              webpCharImage.srcset = "../images/" + charWebp[3];
-              pngCharImage.src = "../images/" + charPng[3];
-              speak.innerHTML = "Toit minulle yrttejä - olet yllättävä tapaus. Sinulla varmasti on joku taka-ajatus tässä. Tässä kolikko palveluksestasi, jätä minut nyt rauhaan.";
-              talk[3] = "NOITA:   Olen kiireinen, jätä minut rauhaan.";
-
-              var _i2 = backPack.indexOf("yrtit");
-
-              var _y2 = items.indexOf("kolikko");
-
-              backPack.splice(_i2, 1);
-              itemLocations[_y2] = 2;
+              webpCharImage.srcset = "images/" + charWebp[8];
+              pngCharImage.src = "images/" + charPng[8];
+              speak.innerHTML = "KUNINGAS:   Sait lohikäärmeen tapettua. Valtakuntamme on nyt turvassa. Suurkiitokset sinulle. ***Peli päättyi***";
             } else {
               warning.style.color = "lightgreen";
-              warning.innerHTML = "Tutkit yrttejä - ne tuoksuvat voimakkaasti. Sinulla ei ole niille käyttöä.";
+              warning.innerHTML = "Tutkit ja testaat miekkaa kädessäsi. Miekka on erinomaisesti tasapainotettu ja se on todella terävä.";
+            }
+          } else if (element == "huilu") {
+            if (mapLocation == 0) {
+              document.querySelector(".charDiv").style.display = "block";
+              document.querySelector(".charDiv span").style.display = "none";
+              document.querySelector(".interface").style.display = "none";
+              webpCharImage.srcset = "images/" + charWebp[1];
+              pngCharImage.src = "images/" + charPng[1];
+              speak.innerHTML = talk[1] + " ***Peli päättyi***";
+            } else {
+              warning.style.color = "lightgreen";
+              warning.innerHTML = "Nostat huilun huulillesi ja alat soittamaan. Soitto on todella lumoavaa ja tuntuu kuin sen äänessä olisi taikaa.";
+            }
+          } else if (element == "koru") {
+            if (mapLocation == 8) {
+              document.querySelector(".charDiv").style.display = "block";
+              document.querySelector(".interface").style.display = "none";
+              webpCharImage.srcset = "images/" + charWebp[6];
+              pngCharImage.src = "images/" + charPng[6];
+              speak.innerHTML = "BARDI:   Sinäkö löysit koruni? Olin jo luovuttanut toivon sen löytymisen suhteen. Minulla ei ole rikkauksia, mutta tämä huilu voi olla sinulle todella arvokas.";
+              talk[6] = "BARDI:   Olet aina tervetullut iloisen musiikkini pariin. Muista, että musiikki avaa mysteerejä maailmassa.";
+
+              var _i2 = backPack.indexOf("koru");
+
+              var _y2 = items.indexOf("huilu");
+
+              backPack.splice(_i2, 1);
+              itemLocations[_y2] = 8;
+            } else {
+              warning.style.color = "lightgreen";
+              warning.innerHTML = "Koru on yksinkertainen ja kaunis. Sen sisällä on kaiverrus naisesta.";
             }
           }
-
-          break;
-        } else {
-          warning.innerHTML = "Ei sellaista tavaraa mukana";
         }
       }
     } catch (err) {
@@ -496,8 +504,8 @@ function playGame() {
       } else if (mapLocation === 5) {
         document.querySelector(".charDiv").style.display = "block";
         document.querySelector(".interface").style.display = "none";
-        webpCharImage.srcset = "../images/" + charWebp[5];
-        pngCharImage.src = "../images/" + charPng[5];
+        webpCharImage.srcset = "images/" + charWebp[5];
+        pngCharImage.src = "images/" + charPng[5];
         speak.innerHTML = talk[5];
       } else {
         warning.innerHTML = blockMessage[mapLocation];
